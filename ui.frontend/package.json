@@ -1,0 +1,53 @@
+{
+  "name": "aem-maven-archetype",
+  "version": "1.0.0",
+  "description": "Generates an AEM Frontend project with Webpack",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "private": true,
+  "main": "src/main/webpack/site/main.ts",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "scripts": {
+    "dev": "vite build --mode development && clientlib --verbose",
+    "prod": "vite build && clientlib --verbose",
+    "start": "vite serve",
+    "sync": "aemsync -d -p ../ui.apps/src/main/content",
+    "chokidar": "chokidar -c \"clientlib\" ./dist",
+    "aemsyncro": "aemsync -w ../ui.apps/src/main/content",
+    "watch": "npm-run-all --parallel start chokidar aemsyncro"
+  },
+  "devDependencies": {
+    "@aem-vite/vite-aem-plugin": "^5.1.1",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "acorn": "^6.1.0",
+    "aem-clientlib-generator": "^1.8.0",
+    "aemsync": "^4.0.1",
+    "autoprefixer": "^9.2.1",
+    "browserslist": "^4.2.1",
+    "chokidar-cli": "^3.0.0",
+    "cssnano": "^5.0.12",
+    "eslint": "^8.4.1",
+    "postcss": "^8.2.15",
+    "sass": "^1.45.0",
+    "typescript": "^4.8.2",
+    "vite": "^8.0.10",
+    "vite-tsconfig-paths": "^6.1.1"
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%"
+  ],
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
+}

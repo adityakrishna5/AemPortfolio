@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/adkstvite" mode="merge"/>
+    <filter root="/content/adkstvite" mode="merge"/>
+    <filter root="/content/dam/adkstvite" mode="merge">
+        <exclude pattern="/content/dam/adkstvite(/.*)?"/>
+        <include pattern="/content/dam/adkstvite/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/adkstvite/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/adkstvite" mode="merge"/>
+</workspaceFilter>

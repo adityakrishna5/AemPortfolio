@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/adkstvite",
+        "create path (nt:unstructured) /content/dam/adkstvite/jcr:content",
+        "set properties on /content/dam/adkstvite/jcr:content\n  set cq:conf{String} to /conf/adkstvite\n  set jcr:title{String} to \"Traditional ADKST Vite\"\nend"
+    ]
+}
