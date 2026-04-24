@@ -1,0 +1,47 @@
+// Travel page layout overrides
+// Removes AEM responsive grid padding/margins so React sections render full-width.
+
+body.travel-page {
+  // Fill full viewport height so footer sticks to bottom with no gap
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // Match footer bg so any remaining space after footer is invisible
+  background: #0c0a09 !important;
+
+  // Root container must grow to fill remaining space
+  > .root.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Strip margin/padding from all AEM grid wrappers
+  .root.container,
+  .aem-Grid,
+  .aem-GridColumn,
+  .cmp-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    float: none !important;
+  }
+
+  // Override the default container padding from container_main.scss
+  main.container {
+    padding: 0 !important;
+  }
+
+  // Ensure cmp-text wrapper is also flush
+  .cmp-text {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  // Make the travel-footer-area container push to the end
+  .travel-footer-area,
+  [class*="travel-footer"] {
+    margin-top: auto;
+  }
+}

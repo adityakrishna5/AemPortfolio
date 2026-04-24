@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Travel Header"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/tabs">
+        <items jcr:primaryType="nt:unstructured">
+
+            <!-- Tab: Brand -->
+            <brand
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Brand"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <brandName
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Brand Name"
+                        fieldDescription="Site name displayed in the top-left logo area."
+                        name="./brandName"/>
+                    <brandHref
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Brand Link"
+                        name="./brandHref"
+                        rootPath="/content"/>
+                </items>
+            </brand>
+
+            <!-- Tab: Navigation -->
+            <navigation
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Navigation"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <navItems
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Navigation Links"
+                        name="./navItems">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                            <items jcr:primaryType="nt:unstructured">
+                                <label
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Label"
+                                    name="label"/>
+                                <href
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Link"
+                                    name="href"
+                                    rootPath="/content"/>
+                            </items>
+                        </field>
+                    </navItems>
+                </items>
+            </navigation>
+
+            <!-- Tab: CTAs -->
+            <ctas
+                jcr:primaryType="nt:unstructured"
+                jcr:title="CTAs"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <signInLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Sign In Button Label"
+                        name="./signInLabel"/>
+                    <signInHref
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Sign In Link"
+                        name="./signInHref"
+                        rootPath="/content"/>
+                    <registerLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Register Button Label"
+                        name="./registerLabel"/>
+                    <registerHref
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Register Link"
+                        name="./registerHref"
+                        rootPath="/content"/>
+                </items>
+            </ctas>
+
+        </items>
+    </content>
+</jcr:root>

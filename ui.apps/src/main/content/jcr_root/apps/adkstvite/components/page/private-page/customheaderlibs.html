@@ -1,0 +1,8 @@
+<!--/*
+    Private page: inherits clientlibs from adkstvite/components/page.
+    Adds an auth-guard meta tag read by the frontend JS to enforce sign-in.
+    The actual redirect logic lives in PrivateHeader.tsx (Auth0 token check).
+    TODO: Wire in Auth0 SDK clientlib category when Auth0 integration is added.
+*/-->
+<meta name="adkstvite:page-type" content="private"/>
+<meta name="adkstvite:auth-required" content="true"/>

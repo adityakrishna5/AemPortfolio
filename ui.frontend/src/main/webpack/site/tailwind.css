@@ -1,0 +1,6 @@
+/* Tailwind CSS v4 — processed by @tailwindcss/vite plugin */
+@import "tailwindcss";
+
+@theme {
+  --font-family-sans: 'Arial', 'Helvetica Neue', sans-serif;
+}

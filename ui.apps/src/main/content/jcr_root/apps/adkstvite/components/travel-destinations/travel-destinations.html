@@ -1,0 +1,12 @@
+<!--/*
+  travel-destinations.html
+  Renders the React mount point for FeaturedDestinations.
+  Destinations list is passed as a JSON string built by the Sling Model.
+*/-->
+<div data-sly-use.model="com.adkstvite.core.models.travel.TravelDestinationsModel"
+     id="travel-destinations"
+     data-overline="${model.overline @ context='attribute'}"
+     data-heading="${model.heading @ context='attribute'}"
+     data-description="${model.description @ context='attribute'}"
+     data-destinations="${model.destinationsJson @ context='attribute'}">
+</div>

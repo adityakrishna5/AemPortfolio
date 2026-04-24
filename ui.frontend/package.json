@@ -23,6 +23,7 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@tailwindcss/vite": "^4.2.4",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
@@ -38,6 +39,7 @@
     "eslint": "^8.4.1",
     "postcss": "^8.2.15",
     "sass": "^1.45.0",
+    "tailwindcss": "^4.2.4",
     "typescript": "^4.8.2",
     "vite": "^8.0.10",
     "vite-tsconfig-paths": "^6.1.1"

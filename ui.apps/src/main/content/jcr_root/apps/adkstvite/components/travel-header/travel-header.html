@@ -1,0 +1,15 @@
+<!--/*
+  travel-header.html
+  Renders the React mount point for TravelHeader.
+  All authored data is forwarded as data-* attributes; React reads them via dataset.*.
+*/-->
+<div data-sly-use.model="com.adkstvite.core.models.travel.TravelHeaderModel"
+     id="travel-header"
+     data-brand-name="${model.brandName @ context='attribute'}"
+     data-brand-href="${model.brandHref @ context='attribute'}"
+     data-nav-items="${model.navItemsJson @ context='attribute'}"
+     data-sign-in-label="${model.signInLabel @ context='attribute'}"
+     data-sign-in-href="${model.signInHref @ context='attribute'}"
+     data-register-label="${model.registerLabel @ context='attribute'}"
+     data-register-href="${model.registerHref @ context='attribute'}">
+</div>

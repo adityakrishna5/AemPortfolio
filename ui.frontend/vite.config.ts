@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { viteForAem } from '@aem-vite/vite-aem-plugin';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig(({ command, mode }) => ({
   base: command === 'build' ? '/etc.clientlibs/adkstvite/clientlibs/' : '/',
@@ -19,6 +20,7 @@ export default defineConfig(({ command, mode }) => ({
       input: {
         bundle: 'src/main/webpack/site/main.ts',
         styles: 'src/main/webpack/site/main.scss',
+        tailwind: 'src/main/webpack/site/tailwind.css',
       },
       output: {
         assetFileNames: (chunk) =>
@@ -32,6 +34,7 @@ export default defineConfig(({ command, mode }) => ({
   },
 
   plugins: [
+    tailwindcss(),
     react(),
     tsconfigPaths(),
     viteForAem({

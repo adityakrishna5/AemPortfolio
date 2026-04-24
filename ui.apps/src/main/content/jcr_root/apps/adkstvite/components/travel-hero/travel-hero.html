@@ -1,0 +1,16 @@
+<!--/*
+  travel-hero.html
+  Renders the React mount point for TravelHero.
+*/-->
+<div data-sly-use.model="com.adkstvite.core.models.travel.TravelHeroModel"
+     id="travel-hero"
+     data-hero-image="${model.heroImage @ context='attribute'}"
+     data-badge-text="${model.badgeText @ context='attribute'}"
+     data-headline="${model.headline @ context='attribute'}"
+     data-headline-accent="${model.headlineAccent @ context='attribute'}"
+     data-subheadline="${model.subheadline @ context='attribute'}"
+     data-cta1-label="${model.cta1Label @ context='attribute'}"
+     data-cta1-href="${model.cta1Href @ context='attribute'}"
+     data-cta2-label="${model.cta2Label @ context='attribute'}"
+     data-cta2-href="${model.cta2Href @ context='attribute'}">
+</div>

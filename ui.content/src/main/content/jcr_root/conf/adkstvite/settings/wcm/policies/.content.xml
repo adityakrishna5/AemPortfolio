@@ -271,7 +271,8 @@
                     jcr:description="Sets a &lt;main> element on the page content area."
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Page Main"
-                    sling:resourceType="wcm/core/components/policy/policy">
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[group:Travel,group:Traditional ADKST Vite - Content,group:Traditional ADKST Vite - Structure,/apps/adkstvite/components/form/container]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_649128221558427>
                 <policy_1575040440977

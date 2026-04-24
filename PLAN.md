@@ -1103,3 +1103,172 @@ These are NOT in your original list but are standard for a project of this scope
 20. **Disaster recovery doc** — RTO 4h, RPO 1h targets; backup restore runbook.
 
 Say the word and I'll expand any of these into concrete tasks and file-level code.
+
+---
+
+## 27. MSM + Secured Nav + React Integration Roadmap
+
+### 27.1 Do You Need MSM?
+
+Only if you have multiple sites/locales sharing structure.
+
+| Scenario                                 | MSM needed?                 |
+| ---------------------------------------- | --------------------------- |
+| Single site `adkstvite/us/en`            | No                          |
+| Add `adkstvite/uk/en` with same template | Yes                         |
+| Add `adkstvite/fr/fr` (translated)       | Yes (+ Language Copy)       |
+| White-label for another brand            | Yes (Blueprint → Live Copy) |
+
+**If you add MSM later:**
+
+- Create a Blueprint at `/content/adkstvite/blueprint`
+- Live Copies inherit structure/template, override content per region
+- Rollout configs control what syncs (template, nav, policies) vs what's local (page content, language)
+
+**For now: skip MSM.** Finish the single-site travel build first.
+
+---
+
+### 27.2 Why Header & Footer Must Be Experience Fragments
+
+The current setup authors header/footer inside each page's JCR (`/content/adkstvite/us/en/home/jcr:content/.../header-mount`). Problems:
+
+- Changing nav links = editing every page's `.content.xml` separately
+- No single publish action propagates to all pages
+- Adding a new page template means copy-pasting the same header/footer nodes again
+
+**What Experience Fragments give you:**
+
+| Concern         | Without XF (current) | With XF            |
+| --------------- | -------------------- | ------------------ |
+| Nav link change | Edit every page      | Edit XF once       |
+| Publish         | Activate every page  | Activate one XF    |
+| Multi-template  | Duplicate nodes      | Single reference   |
+| A/B testing     | Per-page             | XF Variation       |
+| Analytics       | Per-component        | XF-level targeting |
+
+**Migration steps:**
+
+1. Create XF at `/content/experience-fragments/adkstvite/header/master` with `travel-header` component
+2. Create XF at `/content/experience-fragments/adkstvite/footer/master` with `travel-footer` component
+3. Replace `travel-header-area` in `structure/.content.xml` with `core/wcm/components/experiencefragment/v2/experiencefragment` (no `editable=true`)
+4. Remove `travel-header-area` and `travel-footer-area` from every page's `.content.xml`
+5. Remove them from `initial/.content.xml` too
+
+---
+
+### 27.3 Building a Template From Scratch — Key Rules
+
+An AEM editable template lives at `/conf/<site>/settings/wcm/templates/<name>/` and has 4 parts:
+
+1. **Root `.content.xml`** — `cq:Template`, `allowedPaths`, `cq:status=enabled`, `ranking`
+2. **`structure/.content.xml`** — locked layout skeleton. Only containers get `editable=true`. Editable containers must be **self-closing** (no children). XF references here are locked (no `editable=true`).
+3. **`initial/.content.xml`** — default content pre-populated when a new page is created from this template
+4. **`policies/.content.xml`** — maps each zone to a policy that controls allowed components and CSS grid settings
+
+**Critical rules learned:**
+
+- `editable=true` **only on containers**, never on leaf components — leaf + `editable=true` → `structure:true` in editConfig → locked gray overlay, no edit actions
+- **Editable containers must be self-closing** in `structure/` — children inside block AEM from generating `data-path` overlays
+- Default content goes in `initial/`, not `structure/`
+- Header/footer in `structure/` should reference XFs or be plain locked components, never `editable=true`
+
+---
+
+### 27.4 Secured Pages — How Nav Items Change
+
+This is a 3-layer problem: AEM controls structure, React controls rendering, auth provider controls state.
+
+```
+AEM (what CAN appear)  →  Auth State (what SHOULD appear)  →  React (what DOES appear)
+```
+
+**AEM layer** — author all nav items, tag secured ones in dialog:
+
+```xml
+<nav-item-dashboard
+    jcr:primaryType="nt:unstructured"
+    label="My Trips"
+    href="/content/adkstvite/us/en/dashboard"
+    secured="{Boolean}true"
+    unauthenticatedHref="/content/adkstvite/us/en/sign-in"/>
+
+<nav-item-signin
+    jcr:primaryType="nt:unstructured"
+    label="Sign In"
+    href="/content/adkstvite/us/en/sign-in"
+    secured="{Boolean}false"
+    hideWhenAuthenticated="{Boolean}true"/>
+```
+
+**Sling Model layer** — expose auth-aware nav JSON, pass as `data-nav-items` on HTL mount point.
+
+**React layer** — filter nav items based on `useAuth()` hook:
+
+```tsx
+const visibleItems = navItems.filter((item) => {
+  if (item.secured && !isAuthenticated) return false;
+  if (item.hideWhenAuthenticated && isAuthenticated) return false;
+  return true;
+});
+```
+
+---
+
+### 27.5 Full React Integration Roadmap
+
+#### Phase 1 — Foundation (current state)
+
+- [x] AEM components with HTL data-\* bridge
+- [x] React mount points via MutationObserver
+- [ ] Move header/footer to Experience Fragments
+- [ ] XF HTL passes nav JSON as `data-nav-items`
+
+#### Phase 2 — Auth Layer
+
+- Build `/bin/adkstvite/auth/me` Sling servlet → reads AEM session or JWT cookie → returns `{userId, name, email, roles[]}`
+- React `useAuth()` hook calls this endpoint on mount
+- `AuthContext` wraps the whole app (or just header mount)
+- Protected pages: React checks auth before rendering, redirects to `/sign-in` if needed
+
+#### Phase 3 — State Sharing Across Mounts
+
+Current architecture has isolated React roots per component. Options:
+
+| Pattern                               | Use when                           |
+| ------------------------------------- | ---------------------------------- |
+| `window.__ADKST_STATE__` global       | Simple auth flag, small state      |
+| Custom events (`dispatchEvent`)       | Cross-mount communication          |
+| Zustand singleton                     | Complex shared state (recommended) |
+| Single React root wrapping all mounts | Full SPA migration                 |
+
+**Recommended:** Zustand singleton — shared across all mount points, no Provider needed:
+
+```ts
+// store/authStore.ts
+export const useAuthStore = create((set) => ({
+  user: null,
+  setUser: (user) => set({ user }),
+}));
+```
+
+#### Phase 4 — Personalization
+
+- AEM ContextHub segments by geo, device, auth state → targets different XF variations
+- Or drive via user roles from `/bin/adkstvite/auth/me` purely in React
+
+#### Phase 5 — MSM (if multi-region)
+
+- Blueprint → rollout to `/content/adkstvite/uk/en`, `/fr/fr`
+- Each Live Copy inherits template + XF references, overrides page content + locale nav labels
+- Language Copy for translations
+
+---
+
+### 27.6 Execution Order
+
+1. XF migration (header/footer) — single source of truth for nav
+2. `/bin/adkstvite/auth/me` servlet — enables all auth features
+3. `useAuth()` + nav filtering in React — secured nav done
+4. Zustand auth store shared across mounts — cross-component state
+5. MSM only if a second locale is added — defer until needed

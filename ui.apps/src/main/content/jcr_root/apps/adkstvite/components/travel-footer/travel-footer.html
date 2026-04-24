@@ -1,0 +1,12 @@
+<!--/*
+  travel-footer.html
+  Renders the React mount point for TravelFooter.
+*/-->
+<div data-sly-use.model="com.adkstvite.core.models.travel.TravelFooterModel"
+     id="travel-footer"
+     data-brand-name="${model.brandName @ context='attribute'}"
+     data-brand-href="${model.brandHref @ context='attribute'}"
+     data-tagline="${model.tagline @ context='attribute'}"
+     data-quick-links="${model.quickLinksJson @ context='attribute'}"
+     data-top-destinations="${model.topDestinationsJson @ context='attribute'}">
+</div>

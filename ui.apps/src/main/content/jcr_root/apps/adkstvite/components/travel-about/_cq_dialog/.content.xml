@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Travel About"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/tabs">
+        <items jcr:primaryType="nt:unstructured">
+
+            <!-- Tab: Image -->
+            <image
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Image"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <aboutImage
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="About Image (DAM)"
+                        name="./aboutImage"
+                        rootPath="/content/dam"/>
+                </items>
+            </image>
+
+            <!-- Tab: Text -->
+            <text
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Text"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <overline
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Overline"
+                        name="./overline"/>
+                    <headline
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Headline (first line)"
+                        name="./headline"/>
+                    <headlineAccent
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Headline Accent (second line — amber)"
+                        name="./headlineAccent"/>
+                    <para1
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                        fieldLabel="Paragraph 1"
+                        name="./para1"
+                        rows="{Long}5"/>
+                    <para2
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                        fieldLabel="Paragraph 2"
+                        name="./para2"
+                        rows="{Long}5"/>
+                    <ctaLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="CTA Button Label"
+                        name="./ctaLabel"/>
+                    <ctaHref
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="CTA Link"
+                        name="./ctaHref"
+                        rootPath="/content"/>
+                </items>
+            </text>
+
+            <!-- Tab: Stats -->
+            <stats
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Stats"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <stat1Value
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stat 1 — Value (e.g. 60+)"
+                        name="./stat1Value"/>
+                    <stat1Label
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stat 1 — Label (e.g. Countries)"
+                        name="./stat1Label"/>
+                    <stat2Value
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stat 2 — Value"
+                        name="./stat2Value"/>
+                    <stat2Label
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stat 2 — Label"
+                        name="./stat2Label"/>
+                    <stat3Value
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stat 3 — Value"
+                        name="./stat3Value"/>
+                    <stat3Label
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stat 3 — Label"
+                        name="./stat3Label"/>
+                    <stat4Value
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stat 4 — Value"
+                        name="./stat4Value"/>
+                    <stat4Label
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stat 4 — Label"
+                        name="./stat4Label"/>
+                </items>
+            </stats>
+
+        </items>
+    </content>
+</jcr:root>

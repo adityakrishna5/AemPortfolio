@@ -44,6 +44,7 @@
                         <configuration>
                             <bnd><![CDATA[
 Import-Package: javax.annotation;version=0.0.0,*
+Export-Package: com.adkstvite.core.models.travel
                                 ]]></bnd>
                         </configuration>
                     </execution>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="AdventureTrails — travel homepage with hero, about, and featured destinations"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Home"
+        navTitle="Home"
+        pageTitle="AdventureTrails — Discover Your Next Adventure"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+
+            <!--/* LOCKED: header mount — React renders TravelHeader here */-->
+            <travel-header-area
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container">
+                <header-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-header"
+                    brandName="AdventureTrails"
+                    brandHref="/content/adkstvite/us/en/home.html"
+                    signInLabel="Sign In"
+                    signInHref="/content/adkstvite/us/en/sign-in.html"
+                    registerLabel="Register"
+                    registerHref="/content/adkstvite/us/en/register.html">
+                    <navItems jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            label="Home"
+                            href="/content/adkstvite/us/en/home.html"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            label="About Us"
+                            href="/content/adkstvite/us/en/about-us.html"/>
+                    </navItems>
+                </header-mount>
+            </travel-header-area>
+
+            <!--/* EDITABLE: main page content */-->
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+
+                <!--/* Hero section */-->
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-238230356.jpeg"
+                    badgeText="Premium Adventure Travel"
+                    headline="Your Next Great"
+                    headlineAccent="Adventure Awaits"
+                    subheadline="Expertly guided expeditions to the world's most breathtaking destinations. From icy peaks to sun-drenched coasts — we take you there."
+                    cta1Label="Explore Destinations"
+                    cta1Href="/content/adkstvite/us/en/about-us.html"
+                    cta2Label="Learn More"
+                    cta2Href="/content/adkstvite/us/en/about-us.html"/>
+
+                <!--/* About section */-->
+                <about-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-about"
+                    aboutImage="/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-167833331.jpeg"
+                    overline="About AdventureTrails"
+                    headline="We Don't Just Book Trips."
+                    headlineAccent="We Craft Expeditions."
+                    para1="Born from a love of wild places, AdventureTrails was founded to connect passionate travellers with extraordinary, off-the-beaten-path experiences. Every itinerary is handcrafted by experts who have lived the journey themselves."
+                    para2="We believe travel should transform you. Our expeditions are designed to stretch your limits, introduce you to remarkable cultures, and leave you with stories that last a lifetime."
+                    stat1Value="12k"
+                    stat1Label="Adventurers Guided"
+                    stat2Value="48"
+                    stat2Label="Countries Explored"
+                    stat3Value="98%"
+                    stat3Label="Satisfaction Rate"
+                    stat4Value="14"
+                    stat4Label="Years of Experience"
+                    ctaLabel="Our Story"
+                    ctaHref="/content/adkstvite/us/en/about-us.html"/>
+
+                <!--/* Destinations section */-->
+                <destinations-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-destinations"
+                    overline="Where to Next"
+                    heading="Featured Destinations"
+                    description="Handpicked expeditions for the bold and the curious — every destination is vetted by our expert adventure team.">
+                    <items jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            title="Mont Blanc Ski Touring"
+                            location="Chamonix, French Alps"
+                            description="Tackle iconic high-altitude ski routes across the roof of Europe. Glaciers, couloirs, and jaw-dropping panoramas await at every ridge."
+                            image="/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-273139829.jpeg"
+                            href="/content/adkstvite/us/en/about-us.html"
+                            tag="Alpine"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            title="Outback River Camp"
+                            location="Western Australia"
+                            description="Sleep under a blanket of stars beside ancient rivers. Explore red gorges, swim in crystal rockpools, and hear the wild call of the outback."
+                            image="/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-167833331.jpeg"
+                            href="/content/adkstvite/us/en/about-us.html"
+                            tag="Wilderness"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            title="Alpine Summit Trek"
+                            location="Mont Blanc Massif, Italy"
+                            description="Multi-day traverse of legendary alpine terrain — hut-to-hut trails, vertiginous ridgelines, and golden sunsets above the clouds."
+                            image="/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-75620750.jpeg"
+                            href="/content/adkstvite/us/en/about-us.html"
+                            tag="Trekking"/>
+                    </items>
+                </destinations-mount>
+            </main-content>
+
+            <!--/* LOCKED: footer mount — React renders TravelFooter here */-->
+            <travel-footer-area
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container">
+                <footer-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-footer"
+                    brandName="AdventureTrails"
+                    brandHref="/content/adkstvite/us/en/home.html"
+                    tagline="Connecting adventurers with extraordinary destinations since 2010. Every trip is a story waiting to be written.">
+                    <quickLinks jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured" label="Home" href="/content/adkstvite/us/en/home.html"/>
+                        <item1 jcr:primaryType="nt:unstructured" label="About Us" href="/content/adkstvite/us/en/about-us.html"/>
+                        <item2 jcr:primaryType="nt:unstructured" label="Sign In" href="/content/adkstvite/us/en/sign-in.html"/>
+                        <item3 jcr:primaryType="nt:unstructured" label="Register" href="/content/adkstvite/us/en/register.html"/>
+                    </quickLinks>
+                    <topDestinations jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured" label="Arctic Surfing, Norway" href="/content/adkstvite/us/en/about-us.html"/>
+                        <item1 jcr:primaryType="nt:unstructured" label="Svalbard Trekking" href="/content/adkstvite/us/en/about-us.html"/>
+                        <item2 jcr:primaryType="nt:unstructured" label="Iceland Ring Road" href="/content/adkstvite/us/en/about-us.html"/>
+                        <item3 jcr:primaryType="nt:unstructured" label="Scottish Highlands" href="/content/adkstvite/us/en/about-us.html"/>
+                        <item4 jcr:primaryType="nt:unstructured" label="Patagonia Crossing" href="/content/adkstvite/us/en/about-us.html"/>
+                    </topDestinations>
+                </footer-mount>
+            </travel-footer-area>
+
+        </root>
+    </jcr:content>
+</jcr:root>

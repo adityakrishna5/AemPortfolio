@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/adkstvite" mode="merge"/>
-    <filter root="/content/adkstvite" mode="merge"/>
+    <filter root="/conf/adkstvite" mode="replace"/>
+    <filter root="/content/adkstvite" mode="replace"/>
     <filter root="/content/dam/adkstvite" mode="merge">
         <exclude pattern="/content/dam/adkstvite(/.*)?"/>
         <include pattern="/content/dam/adkstvite/jcr:content(/.*)?"/>
