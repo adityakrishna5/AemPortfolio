@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Traversée de Patagonie — deux semaines de trek à travers les Andes australes"
+        jcr:language="fr"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Traversée de Patagonie"
+        navTitle="Traversée de Patagonie"
+        pageTitle="Traversée de Patagonie — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/climbing-new-zealand/adobestock-277768563.jpeg"
+                    badgeText="Expédition · 14 jours"
+                    headline="Traversée"
+                    headlineAccent="de Patagonie"
+                    subheadline="Deux semaines à travers les aiguilles granitiques, glaciers bleus et steppes battues des Andes australes."
+                    cta1Label="Réserver l&apos;expédition"
+                    cta1Href="/content/adkstvite/fr/fr/register.html"
+                    cta2Label="Poser une question"
+                    cta2Href="/content/adkstvite/fr/fr/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;Le bout du monde &amp;mdash; à pied&lt;/h2&gt;&lt;p&gt;Notre Traversée de Patagonie relie le classique circuit &quot;W&quot; du parc Torres del Paine au massif du Fitz Roy côté argentin en un seul trek de deux semaines. Lacs glaciaires turquoise, condors en vol et nuits en refuges chaleureux après de longues journées dans le grand dehors.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/climbing-new-zealand/adobestock-277768563.jpeg"
+                    alt="Randonneurs sous les aiguilles granitiques de Patagonie"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;Étapes de l&apos;expédition&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Arrivée à Punta Arenas, journée logistique et briefing avec les guides locaux.&lt;/li&gt;&lt;li&gt;Circuit &quot;W&quot; complet&amp;nbsp;: vallée du Français, glacier Grey et lever de soleil aux Base Torres.&lt;/li&gt;&lt;li&gt;Passage de frontière vers l&apos;Argentine par El Calafate et le glacier Perito Moreno.&lt;/li&gt;&lt;li&gt;El Chalt&amp;eacute;n&amp;nbsp;: Laguna de los Tres sous le Fitz Roy et belvédère du Cerro Torre.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Niveau d&apos;expérience&lt;/h3&gt;&lt;p&gt;Exigeant. Vous devez être un randonneur régulier à l&apos;aise sur terrain exposé et venté 6 à 8 heures par jour. Aucune technique d&apos;escalade requise, mais météo variable et descentes raides en éboulis à prévoir.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

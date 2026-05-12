@@ -8,6 +8,11 @@ interface TravelFooterProps {
   tagline?: string;
   quickLinksJson?: string;
   topDestinationsJson?: string;
+  quickLinksHeading?: string;
+  topDestinationsHeading?: string;
+  newsletterHeading?: string;
+  newsletterDescription?: string;
+  newsletterButtonLabel?: string;
 }
 
 function tryParseJson<T>(json: string, fallback: T): T {
@@ -35,6 +40,11 @@ const TravelFooter: React.FC<TravelFooterProps> = ({
   tagline = 'Connecting adventurers with extraordinary destinations since 2010. Every trip is a story waiting to be written.',
   quickLinksJson,
   topDestinationsJson,
+  quickLinksHeading = 'Quick Links',
+  topDestinationsHeading = 'Top Destinations',
+  newsletterHeading = 'Stay Connected',
+  newsletterDescription = 'Get expedition updates and travel inspiration in your inbox.',
+  newsletterButtonLabel = 'Go',
 }) => {
   const quickLinks: LinkItem[] = quickLinksJson
     ? tryParseJson<LinkItem[]>(quickLinksJson, DEFAULT_QUICK_LINKS)
@@ -72,7 +82,7 @@ const TravelFooter: React.FC<TravelFooterProps> = ({
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-200 mb-4">Quick Links</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-200 mb-4">{quickLinksHeading}</h3>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.label}>
@@ -85,7 +95,7 @@ const TravelFooter: React.FC<TravelFooterProps> = ({
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-200 mb-4">Top Destinations</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-200 mb-4">{topDestinationsHeading}</h3>
           <ul className="space-y-2">
             {destinations.map((dest) => (
               <li key={dest.label}>
@@ -99,15 +109,15 @@ const TravelFooter: React.FC<TravelFooterProps> = ({
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-200 mb-4">Stay Connected</h3>
-          <p className="text-sm text-stone-500 mb-4">Get expedition updates and travel inspiration in your inbox.</p>
+          <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-200 mb-4">{newsletterHeading}</h3>
+          <p className="text-sm text-stone-500 mb-4">{newsletterDescription}</p>
           <form className="flex gap-2" onSubmit={(e) => e.preventDefault()} aria-label="Newsletter signup">
             <label htmlFor="footer-email" className="sr-only">Email address</label>
             <input id="footer-email" type="email" placeholder="you@email.com" required
               className="flex-1 text-sm px-3 py-2 rounded-lg bg-stone-800 border border-stone-700 text-stone-200 placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500"/>
             <button type="submit"
               className="px-4 py-2 rounded-lg text-sm font-semibold bg-amber-600 text-white hover:bg-amber-500 transition-colors">
-              Go
+              {newsletterButtonLabel}
             </button>
           </form>
         </div>

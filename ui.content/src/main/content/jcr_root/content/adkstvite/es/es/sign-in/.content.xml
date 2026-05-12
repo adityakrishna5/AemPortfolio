@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Inicia sesión en tu cuenta de AdventureTrails para acceder a tus viajes y reservas"
+        jcr:language="es"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Iniciar sesión"
+        navTitle="Iniciar sesión"
+        pageTitle="Iniciar sesión — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <signin-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-signin"
+                    heading="Inicia sesión en tu cuenta"
+                    description="¡Bienvenido de vuelta! Introduce tus credenciales para acceder a tus viajes y reservas."/>
+            </main-content>
+
+        </root>
+    </jcr:content>
+</jcr:root>

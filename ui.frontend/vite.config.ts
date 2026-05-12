@@ -49,6 +49,16 @@ export default defineConfig(({ command, mode }) => ({
   server: {
     port: 3000,
     origin: 'http://localhost:3000',
+    proxy: {
+      // Proxy auth API calls to AEM Publish during Vite dev-server mode.
+      // Without this, fetch('/bin/adkstvite/auth/...') hits the Vite server
+      // and returns 404 instead of reaching the OSGi servlet.
+      '/bin/adkstvite': {
+        target: 'http://localhost:4503',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
 
 }));

@@ -1,0 +1,7 @@
+{
+  "domain": "dev-raxs6tqu8i751qyo.us.auth0.com",
+  "clientId": "Iaq7v390UyUDKxPSXlwwSVEVtFyps0Kk",
+  "clientSecret": "fbAV1jEmgVkD6y7Op3oX0kXaLpS_T18DDnAT0mNAt67zNB6DWcVF-gXSoLgFJwax",
+  "audience": "https://adkstvite.api",
+  "connection": "Username-Password-Authentication"
+}

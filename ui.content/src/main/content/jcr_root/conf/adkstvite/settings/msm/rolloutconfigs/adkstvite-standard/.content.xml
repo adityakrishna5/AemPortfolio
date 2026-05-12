@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="Standard rollout config for AdventureTrails — copies structure + content, preserves locale-specific overrides"
+        jcr:primaryType="cq:RolloutConfig"
+        jcr:title="AdventureTrails Standard Rollout"
+        cq:trigger="rollout">
+        <contentUpdate
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/contentUpdate"/>
+        <contentCopy
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/contentCopy"/>
+        <contentDelete
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/contentDelete"/>
+        <referencesUpdate
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/referencesUpdate"/>
+        <pageMoveUpdate
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/pageMoveUpdate"/>
+        <pageDelete
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/pageDelete"/>
+        <workflow
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/workflow"/>
+        <versionCopy
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/versionCopy"/>
+        <notify
+            jcr:primaryType="cq:LiveSyncAction"
+            sling:resourceType="wcm/msm/components/actions/notify"/>
+    </jcr:content>
+</jcr:root>

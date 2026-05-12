@@ -206,6 +206,14 @@
                 </policy_footer>
             </experiencefragment>
             <container jcr:primaryType="nt:unstructured">
+                <policy_travel_only
+                    jcr:description="Allows Travel site components plus generic Text/Image/Title/Button from the Content group. Used by the travel-page template."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Travel Page Content"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[group:Travel,group:Traditional ADKST Vite - Content]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_travel_only>
                 <policy_1574694950110
                     jcr:description="Allows the template components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
                     jcr:primaryType="nt:unstructured"

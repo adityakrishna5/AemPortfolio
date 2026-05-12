@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Surf arctique en Norvège — vagues polaires au-delà du cercle arctique"
+        jcr:language="fr"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Surf arctique, Norvège"
+        navTitle="Surf arctique"
+        pageTitle="Surf arctique, Norvège — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/bali-surf-camp/adobestock-175749320.jpg"
+                    badgeText="Eaux polaires · 7 jours"
+                    headline="Surf arctique,"
+                    headlineAccent="îles Lofoten"
+                    subheadline="Pagayez sous les aurores boréales et surfez des A-frames cristallines sur des plages arctiques désertes."
+                    cta1Label="Réserver ce voyage"
+                    cta1Href="/content/adkstvite/fr/fr/register.html"
+                    cta2Label="Poser une question"
+                    cta2Href="/content/adkstvite/fr/fr/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;Surfer au bout du monde&lt;/h2&gt;&lt;p&gt;Au-delà du cercle arctique, la mer de Norvège dépose des pics propres et glacés sur des plages de sable blanc bordées de pics de 1 000 mètres. Le surf devient pèlerinage &amp;mdash; une semaine de sessions à l&apos;aube, de néoprène et de fjords immobiles sous la lumière polaire.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/bali-surf-camp/adobestock-175749320.jpg"
+                    alt="Surfeur en eau froide ramant vers un line-up arctique au lever du jour"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;Au programme&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Spots d&apos;Unstad et de Flakstad, sans foule même sur les grosses houles.&lt;/li&gt;&lt;li&gt;Combinaisons 6/5 mm avec cagoule, gants et bottillons fournis &amp;mdash; eau entre 4 et 7&amp;nbsp;&amp;deg;C.&lt;/li&gt;&lt;li&gt;Hébergement en chalet face à la plage, dîners nordiques familiaux chaque soir.&lt;/li&gt;&lt;li&gt;Prévisions aurores boréales quotidiennes &amp;mdash; les nuits claires sont presque toujours au rendez-vous.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Pour qui&lt;/h3&gt;&lt;p&gt;Surfeurs intermédiaires confirmés et plus. Vous devez savoir ramer seul au large et prendre une vague à hauteur d&apos;épaule. Nous gérons le froid, vous apportez l&apos;envie.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

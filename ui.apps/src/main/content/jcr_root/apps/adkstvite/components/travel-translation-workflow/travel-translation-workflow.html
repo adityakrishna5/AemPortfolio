@@ -1,0 +1,20 @@
+<!--/*
+  travel-translation-workflow.html
+  Renders the React mount point for TranslationWorkflowPage.
+  All step content is passed from the Sling Model so each locale can have its own text.
+*/-->
+<div data-sly-use.model="com.adkstvite.core.models.travel.TravelTranslationWorkflowModel"
+     id="travel-translation-workflow"
+     data-heading="${model.heading @ context='attribute'}"
+     data-description="${model.description @ context='attribute'}"
+     data-step1-title="${model.step1Title @ context='attribute'}"
+     data-step1-desc="${model.step1Desc @ context='attribute'}"
+     data-step2-title="${model.step2Title @ context='attribute'}"
+     data-step2-desc="${model.step2Desc @ context='attribute'}"
+     data-step3-title="${model.step3Title @ context='attribute'}"
+     data-step3-desc="${model.step3Desc @ context='attribute'}"
+     data-step4-title="${model.step4Title @ context='attribute'}"
+     data-step4-desc="${model.step4Desc @ context='attribute'}"
+     data-note-heading="${model.noteHeading @ context='attribute'}"
+     data-note-body="${model.noteBody @ context='attribute'}">
+</div>

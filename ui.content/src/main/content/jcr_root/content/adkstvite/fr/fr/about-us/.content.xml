@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="À propos d'AdventureTrails — notre histoire, notre mission et l'équipe derrière vos aventures"
+        jcr:language="fr"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="À propos de nous"
+        navTitle="À propos"
+        pageTitle="À propos de nous — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+
+                <about-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-about"
+                    aboutImage="/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-167833331.jpeg"
+                    overline="À propos d'AdventureTrails"
+                    headline="Nous ne réservons pas seulement des voyages."
+                    headlineAccent="Nous créons des expéditions."
+                    para1="Née d'un amour des grands espaces, AdventureTrails a été fondée pour connecter les voyageurs passionnés avec des expériences extraordinaires hors des sentiers battus. Chaque itinéraire est conçu à la main par des experts qui ont vécu le voyage eux-mêmes."
+                    para2="Nous croyons que le voyage doit vous transformer. Nos expéditions sont conçues pour repousser vos limites, vous faire découvrir des cultures remarquables et vous laisser des histoires qui durent toute une vie."
+                    stat1Value="12k"
+                    stat1Label="Aventuriers guidés"
+                    stat2Value="48"
+                    stat2Label="Pays explorés"
+                    stat3Value="98%"
+                    stat3Label="Taux de satisfaction"
+                    stat4Value="14"
+                    stat4Label="Années d'expérience"
+                    ctaLabel="Notre histoire"
+                    ctaHref="/content/adkstvite/fr/fr/about-us.html"/>
+
+                <destinations-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-destinations"
+                    overline="Destinations populaires"
+                    heading="Découvrez le monde avec nous"
+                    description="Des expéditions triées sur le volet pour les audacieux et les curieux."
+                    exploreTripLabel="Voir l'expédition">
+                    <items jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            title="Ski de Haute Montagne Mont Blanc"
+                            location="Chamonix, Alpes françaises"
+                            description="Parcourez les emblématiques pistes de ski d'altitude sur le toit de l'Europe."
+                            image="/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-273139829.jpeg"
+                            href="/content/adkstvite/fr/fr/about-us.html"
+                            tag="Alpine"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            title="Camp de Rivière Outback"
+                            location="Australie Occidentale"
+                            description="Dormez sous un ciel étoilé au bord de rivières ancestrales."
+                            image="/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-167833331.jpeg"
+                            href="/content/adkstvite/fr/fr/about-us.html"
+                            tag="Nature sauvage"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            title="Trek au Sommet Alpin"
+                            location="Massif du Mont Blanc, Italie"
+                            description="Traversée sur plusieurs jours d'un terrain alpin légendaire."
+                            image="/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-75620750.jpeg"
+                            href="/content/adkstvite/fr/fr/about-us.html"
+                            tag="Randonnée"/>
+                    </items>
+                </destinations-mount>
+
+            </main-content>
+
+        </root>
+    </jcr:content>
+</jcr:root>

@@ -2,6 +2,8 @@
   travel-header.html
   Renders the React mount point for TravelHeader.
   All authored data is forwarded as data-* attributes; React reads them via dataset.*.
+  Auth state (isAuthenticated, displayName) is resolved server-side by TravelHeaderModel
+  from the adv_access_token cookie — React uses this as initial state, eliminating auth flash.
 */-->
 <div data-sly-use.model="com.adkstvite.core.models.travel.TravelHeaderModel"
      id="travel-header"
@@ -11,5 +13,9 @@
      data-sign-in-label="${model.signInLabel @ context='attribute'}"
      data-sign-in-href="${model.signInHref @ context='attribute'}"
      data-register-label="${model.registerLabel @ context='attribute'}"
-     data-register-href="${model.registerHref @ context='attribute'}">
+     data-register-href="${model.registerHref @ context='attribute'}"
+     data-is-authenticated="${model.authenticated @ context='attribute'}"
+     data-display-name="${model.displayName @ context='attribute'}"
+     data-current-locale="${model.currentLocale @ context='attribute'}"
+     data-locales="${model.localesJson @ context='attribute'}">
 </div>

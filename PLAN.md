@@ -1272,3 +1272,104 @@ export const useAuthStore = create((set) => ({
 3. `useAuth()` + nav filtering in React — secured nav done
 4. Zustand auth store shared across mounts — cross-component state
 5. MSM only if a second locale is added — defer until needed
+
+---
+
+## 28. Implementation Log — XF Migration + MSM Scaffolding (2026-04-24)
+
+Completed work converting header/footer from per-page components into shared Experience Fragments, plus scaffolding MSM for `en` (master) → `fr`, `es`.
+
+### 28.1 Files Changed
+
+**Experience Fragment content (reuses existing XF pages)**
+
+| File                                                                                          | Change                                                                                                                                                                                            |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ui.content/.../content/experience-fragments/adkstvite/us/en/site/header/master/.content.xml` | Replaced archetype `navigation`/`languagenavigation`/`search` with `header-mount` using `sling:resourceType="adkstvite/components/travel-header"` — same brand/nav props used previously on pages |
+| `ui.content/.../content/experience-fragments/adkstvite/us/en/site/footer/master/.content.xml` | Replaced archetype `separator`+`text` with `footer-mount` using `sling:resourceType="adkstvite/components/travel-footer"` — includes quickLinks + topDestinations                                 |
+
+**Travel-page template**
+
+| File                                               | Change                                                                                                                                                                                                                                                                                                           |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.../templates/travel-page/structure/.content.xml` | `travel-header-area` + `travel-footer-area` (editable containers) → `header-xf` + `footer-xf` (locked, `sling:resourceType="adkstvite/components/experiencefragment"`, `fragmentVariationPath="/content/experience-fragments/adkstvite/us/en/site/header/master"`). Only `main-content` remains `editable=true`. |
+| `.../templates/travel-page/initial/.content.xml`   | Simplified to only `main-content` empty container — no more header/footer defaults                                                                                                                                                                                                                               |
+| `.../templates/travel-page/policies/.content.xml`  | Removed `travel-header-area`/`travel-footer-area` mappings. Added `header-xf → policy_header`, `footer-xf → policy_footer` (existing XF policies in `/conf/adkstvite/settings/wcm/policies/adkstvite/components/experiencefragment/`). `main-content` still maps to `policy_649128221558427`.                    |
+
+**Pages** (all 4 cleaned)
+
+| File                                                | Change                                                                                                                             |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `.../content/adkstvite/us/en/home/.content.xml`     | Removed `travel-header-area` + `travel-footer-area` subtrees — page now contains only `main-content` (hero + about + destinations) |
+| `.../content/adkstvite/us/en/about-us/.content.xml` | Same cleanup                                                                                                                       |
+| `.../content/adkstvite/us/en/sign-in/.content.xml`  | Same cleanup                                                                                                                       |
+| `.../content/adkstvite/us/en/register/.content.xml` | Same cleanup                                                                                                                       |
+
+**MSM scaffolding** (new files)
+
+| File                                                                             | Purpose                                                                                                                                                                                                                    |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.../content/adkstvite/fr/.content.xml`                                          | French locale root (`cq:Page`) with 302 redirect to `/content/adkstvite/fr/fr`                                                                                                                                             |
+| `.../content/adkstvite/fr/fr/.content.xml`                                       | French site root — `cq:PageContent` with mixins `[cq:LiveRelationship, cq:LiveSyncConfig]`, `cq:master=/content/adkstvite/us/en`, `cq:rolloutConfigs=[…adkstvite-standard]`, `cq:isDeep=true`, `jcr:language=fr`           |
+| `.../content/adkstvite/es/.content.xml`                                          | Spanish locale root                                                                                                                                                                                                        |
+| `.../content/adkstvite/es/es/.content.xml`                                       | Spanish site root — same MSM mixins with `jcr:language=es`                                                                                                                                                                 |
+| `.../conf/adkstvite/settings/msm/rolloutconfigs/adkstvite-standard/.content.xml` | `cq:Page` with `cq:RolloutConfig` jcr:content, `cq:trigger=rollout`, 9 standard Live Sync actions (contentUpdate, contentCopy, contentDelete, referencesUpdate, pageMoveUpdate, pageDelete, workflow, versionCopy, notify) |
+
+### 28.2 Validation Errors Hit & Fixed
+
+| Error                                                                                                         | Root cause                                                                                 | Fix                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Node 'adkstvite-standard [cq:RolloutConfig]' is not allowed as child of node with types [nt:folder]`         | `cq:RolloutConfig` was placed directly under `rolloutconfigs/` folder (nt:folder)          | Made the rollout config a `cq:Page`; moved `cq:RolloutConfig` onto the page's `jcr:content` node                                                   |
+| `Mandatory property 'cq:master' missing in node with types [cq:LiveRelationship, cq:LiveSyncConfig, cq:Page]` | Had `cq:master` on a child `cq:LiveSyncConfig` node instead of on the page's `jcr:content` | Moved `cq:master`, `cq:isDeep`, `cq:rolloutConfigs` directly onto `jcr:content`; added mixins `[cq:LiveRelationship, cq:LiveSyncConfig]` there too |
+| `Filter root's ancestor '/content/dam/adkstvite' is not covered` (WARNING only)                               | Existing in filter.xml                                                                     | No action — warning only                                                                                                                           |
+
+### 28.3 Verification
+
+Post-deploy HTTP status checks (all 200):
+
+```
+/content/adkstvite/us/en/home.html                                    200
+/content/adkstvite/fr/fr.json                                         200
+/content/adkstvite/es/es.json                                         200
+/conf/adkstvite/settings/msm/rolloutconfigs/adkstvite-standard.json   200
+/content/experience-fragments/adkstvite/us/en/site/header/master.html 200
+```
+
+Home page editor `data-path` entries (`?wcmmode=edit`):
+
+```
+hero-mount          structure=False  actions=3   ← editable
+about-mount         structure=False  actions=3   ← editable
+destinations-mount  structure=False  actions=3   ← editable
+*                   structure=False  actions=1   ← INSERT placeholder
+main-content        structure=True   actions=0   ← locked template container (expected)
+```
+
+Header/footer no longer appear in editable data-paths — they are now **locked XF references** rendered server-side from the shared XF.
+
+### 28.4 How MSM Rollout Now Works
+
+1. Author edits `/content/adkstvite/us/en/home` (the master).
+2. From Tools → Sites → MSM Dashboard, trigger a Rollout on `/content/adkstvite/fr/fr` or `/content/adkstvite/es/es`.
+3. The `adkstvite-standard` rollout config runs its 9 Live Sync actions → copies page structure, content, references, and triggers workflow.
+4. Existing pages in the live copy inherit changes; editors can override any field (inheritance is then broken for that field only).
+5. New pages created under `/content/adkstvite/us/en/*` automatically flow to both live copies on next rollout.
+
+### 28.5 Remaining MSM Work (Not Yet Done)
+
+Scaffolded but **not complete** — requires either AEM UI operations or additional content commits:
+
+- [ ] **Initial page rollout**: no `home`, `about-us`, `sign-in`, `register` pages exist under `fr/fr` or `es/es` yet. Do a first rollout via AEM UI (Tools → MSM → select blueprint `/content/adkstvite/us/en` → Rollout to `fr/fr` and `es/es`).
+- [ ] **Localized XF variations**: header/footer XFs only exist under `/content/experience-fragments/adkstvite/us/en`. For French/Spanish header/footer, create `/content/experience-fragments/adkstvite/fr/fr/site/{header,footer}/master` and `/content/experience-fragments/adkstvite/es/es/site/{header,footer}/master`. The template's `fragmentVariationPath` currently hardcodes `us/en` — revisit to use Core Components v2 localization-aware resolution or per-locale policy overrides.
+- [ ] **`cq:ignoreRollout` fields**: per §14 plan (price, currency, stock). Apply on the blueprint pages once commerce fields exist.
+- [ ] **Language Copy + Translation**: wire AEM translation workflow (Microsoft Translator or human) to auto-translate during rollout to `fr` and `es`.
+- [ ] **Dispatcher locale routing**: add `Accept-Language` rewrite rules to the dispatcher config so EU visitors land on `fr/fr` or `es/es` automatically.
+- [ ] **i18n dictionaries**: `ui.apps/.../apps/adkstvite/i18n/{en,fr,es}.json` for UI strings in form labels and React components that don't come from XFs.
+
+### 28.6 Key Architecture Rules Confirmed
+
+- `editable=true` only on containers in template structure, never leaves.
+- Editable containers in template structure must be self-closing — children inside block AEM from generating individual `data-path` overlays.
+- XF references in template structure are **not** `editable=true` — they're locked structural elements, which is exactly what you want for a shared header/footer.
+- Live Copy mixins (`cq:LiveRelationship`, `cq:LiveSyncConfig`) must be on the `jcr:content` node of the page, with `cq:master` as a direct property there.
+- `cq:RolloutConfig` must live on the `jcr:content` of a `cq:Page`, not directly under a folder.

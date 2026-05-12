@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Ruta de Islandia — road trip autoguiado alrededor de la isla de fuego y hielo"
+        jcr:language="es"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Ruta de Islandia"
+        navTitle="Ruta de Islandia"
+        pageTitle="Ruta de Islandia — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/cycling-southern-utah/adobestock-221043703.jpg"
+                    badgeText="Autoguiado · 12 días"
+                    headline="Ruta"
+                    headlineAccent="de Islandia"
+                    subheadline="1.332 kilómetros de cascadas, playas de arena negra y volcanes activos en una vuelta completa por la Ruta 1."
+                    cta1Label="Empezar a planear"
+                    cta1Href="/content/adkstvite/es/es/register.html"
+                    cta2Label="Ver itinerario de ejemplo"
+                    cta2Href="/content/adkstvite/es/es/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;Una vuelta completa a la isla&lt;/h2&gt;&lt;p&gt;La Ruta 1 es el road trip islandés por excelencia &amp;mdash; una única carretera que rodea todo el país entre glaciares, géiseres y cascadas atronadoras. Planificamos la ruta, reservamos los alojamientos, te entregamos las llaves de un 4x4 y te soltamos con un mapa offline detallado.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/cycling-southern-utah/adobestock-221043703.jpg"
+                    alt="Carretera abierta serpenteando por un paisaje volcánico espectacular"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;Paradas imprescindibles&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Sk&amp;oacute;gafoss y Seljalandsfoss &amp;mdash; dos de las cascadas más fotografiadas de Islandia.&lt;/li&gt;&lt;li&gt;Playa de arena negra de Reynisfjara y columnas basálticas de V&amp;iacute;k.&lt;/li&gt;&lt;li&gt;Laguna glaciar de J&amp;ouml;kuls&amp;aacute;rl&amp;oacute;n y Diamond Beach al atardecer.&lt;/li&gt;&lt;li&gt;Lago M&amp;yacute;vatn, Dettifoss y campos geotérmicos del norte.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Qué incluye&lt;/h3&gt;&lt;p&gt;SUV 4x4 con seguro a todo riesgo, 11 noches en guesthouses y granjas cuidadosamente seleccionadas, línea de asistencia local 24/7 y nuestra guía día a día con todas las paradas &amp;mdash; y los rincones secretos que los turistas se pierden.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

@@ -1,4 +1,51 @@
 import React, { useState } from 'react';
+import { login } from './auth/authService';
+
+// ── Locale detection ────────────────────────────────────────────────────────
+function detectLocale(): string {
+  const m = (globalThis.location?.pathname ?? '').match(/\/content\/adkstvite\/([a-z]{2}\/[a-z]{2})\//);
+  return m ? m[1] : 'us/en';
+}
+
+// ── i18n ────────────────────────────────────────────────────────────────────
+interface SignInI18n {
+  noAccount: string; registerFree: string;
+  emailLabel: string; passwordLabel: string; forgotPassword: string;
+  submitLabel: string; submittingLabel: string;
+  welcomeBack: string; redirectMsg: string;
+  emailRequired: string; emailInvalid: string;
+  passwordRequired: string; passwordTooShort: string;
+  genericError: string;
+}
+const SIGN_IN_I18N: Record<string, SignInI18n> = {
+  'us/en': {
+    noAccount: "Don't have an account?", registerFree: 'Register free',
+    emailLabel: 'Email address', passwordLabel: 'Password', forgotPassword: 'Forgot password?',
+    submitLabel: 'Sign In', submittingLabel: 'Signing in…',
+    welcomeBack: 'Welcome back!', redirectMsg: "You're signed in. Redirecting to your dashboard…",
+    emailRequired: 'Email is required.', emailInvalid: 'Please enter a valid email address.',
+    passwordRequired: 'Password is required.', passwordTooShort: 'Password must be at least 8 characters.',
+    genericError: 'Something went wrong. Please try again.',
+  },
+  'fr/fr': {
+    noAccount: "Vous n'avez pas de compte ?", registerFree: "S'inscrire gratuitement",
+    emailLabel: 'Adresse e-mail', passwordLabel: 'Mot de passe', forgotPassword: 'Mot de passe oublié ?',
+    submitLabel: 'Se connecter', submittingLabel: 'Connexion en cours…',
+    welcomeBack: 'Bon retour !', redirectMsg: 'Vous êtes connecté. Redirection vers votre tableau de bord…',
+    emailRequired: "L'adresse e-mail est obligatoire.", emailInvalid: 'Veuillez entrer une adresse e-mail valide.',
+    passwordRequired: 'Le mot de passe est obligatoire.', passwordTooShort: 'Le mot de passe doit comporter au moins 8 caractères.',
+    genericError: 'Une erreur est survenue. Veuillez réessayer.',
+  },
+  'es/es': {
+    noAccount: '¿No tienes cuenta?', registerFree: 'Regístrate gratis',
+    emailLabel: 'Correo electrónico', passwordLabel: 'Contraseña', forgotPassword: '¿Olvidaste tu contraseña?',
+    submitLabel: 'Iniciar sesión', submittingLabel: 'Iniciando sesión…',
+    welcomeBack: '¡Bienvenido de vuelta!', redirectMsg: 'Has iniciado sesión. Redirigiendo a tu panel…',
+    emailRequired: 'El correo electrónico es obligatorio.', emailInvalid: 'Por favor, introduce una dirección de correo válida.',
+    passwordRequired: 'La contraseña es obligatoria.', passwordTooShort: 'La contraseña debe tener al menos 8 caracteres.',
+    genericError: 'Algo salió mal. Por favor, inténtalo de nuevo.',
+  },
+};
 
 interface FormState {
   email: string;
@@ -19,18 +66,24 @@ const SignInForm: React.FC<SignInFormProps> = ({
   heading = 'Sign in to your account',
   description,
 }) => {
+  const locale = detectLocale();
+  const t = SIGN_IN_I18N[locale] ?? SIGN_IN_I18N['us/en'];
+  const base = `/content/adkstvite/${locale}`;
+
   const [form, setForm] = useState<FormState>({ email: '', password: '' });
   const [errors, setErrors] = useState<FieldError>({});
   const [submitted, setSubmitted] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = (): FieldError => {
     const e: FieldError = {};
-    if (!form.email) e.email = 'Email is required.';
+    if (!form.email) e.email = t.emailRequired;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = 'Please enter a valid email address.';
-    if (!form.password) e.password = 'Password is required.';
+      e.email = t.emailInvalid;
+    if (!form.password) e.password = t.passwordRequired;
     else if (form.password.length < 8)
-      e.password = 'Password must be at least 8 characters.';
+      e.password = t.passwordTooShort;
     return e;
   };
 
@@ -42,15 +95,28 @@ const SignInForm: React.FC<SignInFormProps> = ({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
     }
-    // Placeholder: wire up to your auth service here
-    setSubmitted(true);
+    setApiError(null);
+    setIsSubmitting(true);
+    try {
+      const result = await login(form.email, form.password);
+      if (result.error) {
+        setApiError(result.error);
+      } else {
+        setSubmitted(true);
+        globalThis.location.href = `${base}/account.html`;
+      }
+    } catch {
+      setApiError(t.genericError);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -61,8 +127,8 @@ const SignInForm: React.FC<SignInFormProps> = ({
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome back!</h2>
-        <p className="text-gray-500 text-sm">You're signed in. Redirecting to your dashboard…</p>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{t.welcomeBack}</h2>
+        <p className="text-gray-500 text-sm">{t.redirectMsg}</p>
       </div>
     );
   }
@@ -77,7 +143,7 @@ const SignInForm: React.FC<SignInFormProps> = ({
           {/* Heading */}
           <div className="text-center mb-8">
             <a
-              href="/content/adkstvite/us/en/home.html"
+              href={`${base}/home.html`}
               className="inline-flex items-center gap-1 text-amber-600 font-bold text-base mb-4"
             >
               ← AdventureTrails
@@ -89,12 +155,12 @@ const SignInForm: React.FC<SignInFormProps> = ({
               <p className="mt-1 text-sm text-gray-500">{description}</p>
             )}
             <p className="mt-1 text-sm text-gray-500">
-              Don't have an account?{' '}
+              {t.noAccount}{' '}
               <a
-                href="/content/adkstvite/us/en/register.html"
+                href={`${base}/register.html`}
                 className="font-semibold text-amber-600 hover:underline"
               >
-                Register free
+                {t.registerFree}
               </a>
             </p>
           </div>
@@ -103,7 +169,7 @@ const SignInForm: React.FC<SignInFormProps> = ({
             {/* Email */}
             <div>
               <label htmlFor="signin-email" className="block text-sm font-medium text-gray-700 mb-1">
-                Email address
+                {t.emailLabel}
               </label>
               <input
                 id="signin-email"
@@ -130,10 +196,10 @@ const SignInForm: React.FC<SignInFormProps> = ({
             <div>
               <div className="flex justify-between items-center mb-1">
                 <label htmlFor="signin-password" className="block text-sm font-medium text-gray-700">
-                  Password
+                  {t.passwordLabel}
                 </label>
                 <a href="#" className="text-xs text-amber-600 hover:underline">
-                  Forgot password?
+                  {t.forgotPassword}
                 </a>
               </div>
               <input
@@ -157,11 +223,18 @@ const SignInForm: React.FC<SignInFormProps> = ({
               )}
             </div>
 
+            {apiError && (
+              <p role="alert" className="text-sm text-red-600 text-center">
+                {apiError}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="w-full py-3 rounded-lg text-sm font-bold text-white bg-amber-600 hover:bg-amber-700 transition-colors shadow focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+              disabled={isSubmitting}
+              className="w-full py-3 rounded-lg text-sm font-bold text-white bg-amber-600 hover:bg-amber-700 transition-colors shadow focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Sign In
+              {isSubmitting ? t.submittingLabel : t.submitLabel}
             </button>
           </form>
         </div>

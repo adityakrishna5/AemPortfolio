@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Translation rules for Traditional ADKST Vite.
+    Used by AEM Translation Framework to determine which properties of each
+    component should be extracted, sent to a translation provider (MT or TMS),
+    and written back.
+
+    Install at: /libs/settings/translation/rules/translation_rules.xml  (override)
+    or reference via OSGi config for com.adobe.granite.translation.core.impl.TranslationConfigImpl.
+-->
+<translationRules>
+
+    <!-- Page-level translatable properties (all adkstvite pages) -->
+    <node resourceType="adkstvite/components/page">
+        <property name="jcr:title"/>
+        <property name="jcr:description"/>
+        <property name="pageTitle"/>
+        <property name="navTitle"/>
+    </node>
+
+    <!-- Shared XF page -->
+    <node resourceType="adkstvite/components/xfpage">
+        <property name="jcr:title"/>
+        <property name="jcr:description"/>
+    </node>
+
+    <!-- Travel Header: brand + all labels + nav items -->
+    <node resourceType="adkstvite/components/travel-header">
+        <property name="brandName"/>
+        <property name="signInLabel"/>
+        <property name="registerLabel"/>
+        <!-- iterate over navItems children -->
+        <property name="label" inherit="true"/>
+    </node>
+
+    <!-- Travel Footer: brand + tagline + quick links + destinations -->
+    <node resourceType="adkstvite/components/travel-footer">
+        <property name="brandName"/>
+        <property name="tagline"/>
+        <property name="label" inherit="true"/>
+    </node>
+
+    <!-- Hero section -->
+    <node resourceType="adkstvite/components/travel-hero">
+        <property name="title"/>
+        <property name="subtitle"/>
+        <property name="ctaLabel"/>
+        <property name="secondaryCtaLabel"/>
+    </node>
+
+    <!-- Generic Core Component text -->
+    <node resourceType="adkstvite/components/text">
+        <property name="text"/>
+        <property name="richText"/>
+    </node>
+
+    <!-- Core Component title -->
+    <node resourceType="adkstvite/components/title">
+        <property name="jcr:title"/>
+    </node>
+
+    <!-- Core Component image -->
+    <node resourceType="adkstvite/components/image">
+        <property name="alt"/>
+        <property name="jcr:title"/>
+        <property name="jcr:description"/>
+    </node>
+
+    <!-- Core Component button -->
+    <node resourceType="adkstvite/components/button">
+        <property name="jcr:title"/>
+    </node>
+
+    <!-- Translation Workflow Explainer Page — all 12 authored props are text -->
+    <node resourceType="adkstvite/components/travel-translation-workflow">
+        <property name="heading"/>
+        <property name="description"/>
+        <property name="step1Title"/>
+        <property name="step1Desc"/>
+        <property name="step2Title"/>
+        <property name="step2Desc"/>
+        <property name="step3Title"/>
+        <property name="step3Desc"/>
+        <property name="step4Title"/>
+        <property name="step4Desc"/>
+        <property name="noteHeading"/>
+        <property name="noteBody"/>
+    </node>
+
+</translationRules>

@@ -5,6 +5,7 @@
         pageTitle="Traditional ADKST Vite"
         jcr:primaryType="cq:PageContent"
         jcr:title="en"
+        jcr:language="en_US"
         cq:contextHubPath="/etc/cloudsettings/default/contexthub"
         cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
         cq:template="/conf/adkstvite/settings/wcm/templates/page-content"

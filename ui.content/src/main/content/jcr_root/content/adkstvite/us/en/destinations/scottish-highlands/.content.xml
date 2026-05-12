@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Scottish Highlands — wild lochs, ancient glens and the West Highland Way"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Scottish Highlands"
+        navTitle="Scottish Highlands"
+        pageTitle="Scottish Highlands — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-167833331.jpeg"
+                    badgeText="Guided Trek · 8 Days"
+                    headline="Scottish"
+                    headlineAccent="Highlands Trail"
+                    subheadline="Misty glens, Munro summits and whisky-warmed evenings on an eight-day traverse of Scotland&apos;s wildest country."
+                    cta1Label="Join the Trek"
+                    cta1Href="/content/adkstvite/us/en/register.html"
+                    cta2Label="Speak to a Guide"
+                    cta2Href="/content/adkstvite/us/en/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;Walk the old ways&lt;/h2&gt;&lt;p&gt;From the banks of Loch Lomond to the shadow of Ben Nevis, our guided Highland traverse follows drover&apos;s tracks and military roads through some of Europe&apos;s emptiest mountain country. Short daily stages, warm village inns, and two optional Munro ascents for those who want them.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-167833331.jpeg"
+                    alt="Hiker overlooking a misty Highland glen at dawn"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;The route&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Glasgow &amp;rarr; Drymen &amp;rarr; Rowardennan along Loch Lomond&apos;s eastern shore.&lt;/li&gt;&lt;li&gt;Inverarnan, Crianlarich and Tyndrum &amp;mdash; classic drover country.&lt;/li&gt;&lt;li&gt;The Devil&apos;s Staircase and a high route into Kinlochleven.&lt;/li&gt;&lt;li&gt;Finish at Fort William under the shadow of Ben Nevis &amp;mdash; optional summit day included.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Evenings&lt;/h3&gt;&lt;p&gt;Bag drops mean you walk with a daypack while your luggage travels to the next cosy inn. Expect open fires, local ales, and a wee dram of single-malt each night from our guide&apos;s private stash.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

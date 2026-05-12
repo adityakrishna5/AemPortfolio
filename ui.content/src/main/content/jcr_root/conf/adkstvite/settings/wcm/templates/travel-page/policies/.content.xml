@@ -6,19 +6,19 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="wcm/core/components/policies/mappings">
         <root
-            cq:policy="adkstvite/components/container/policy_1574694950110"
+            cq:policy="adkstvite/components/container/policy_travel_only"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/core/components/policies/mapping">
-            <travel-header-area
-                cq:policy="adkstvite/components/container/policy_649128221558427"
+            <header-xf
+                cq:policy="adkstvite/components/experiencefragment/policy_header"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/core/components/policies/mapping"/>
             <main-content
-                cq:policy="adkstvite/components/container/policy_649128221558427"
+                cq:policy="adkstvite/components/container/policy_travel_only"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/core/components/policies/mapping"/>
-            <travel-footer-area
-                cq:policy="adkstvite/components/container/policy_649128221558427"
+            <footer-xf
+                cq:policy="adkstvite/components/experiencefragment/policy_footer"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/core/components/policies/mapping"/>
         </root>

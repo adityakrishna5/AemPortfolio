@@ -18,6 +18,8 @@ import TravelAbout from './TravelAbout';
 import FeaturedDestinations from './FeaturedDestinations';
 import SignInForm from './SignInForm';
 import RegisterForm from './RegisterForm';
+import AccountPage from './AccountPage';
+import TranslationWorkflowPage from './TranslationWorkflowPage';
 
 const COMPONENT_IDS = [
   'travel-header',
@@ -27,6 +29,8 @@ const COMPONENT_IDS = [
   'travel-destinations',
   'travel-signin',
   'travel-register',
+  'travel-account',
+  'travel-translation-workflow',
 ] as const;
 
 type ComponentId = typeof COMPONENT_IDS[number];
@@ -48,6 +52,10 @@ function renderIntoRoot(id: ComponentId, root: Root, el: HTMLElement): void {
           signInHref={d.signInHref}
           registerLabel={d.registerLabel}
           registerHref={d.registerHref}
+          isAuthenticatedInitial={d.isAuthenticated === 'true'}
+          displayNameInitial={d.displayName ?? ''}
+          currentLocale={d.currentLocale ?? 'us/en'}
+          localesJson={d.locales}
         />
       );
       break;
@@ -60,6 +68,11 @@ function renderIntoRoot(id: ComponentId, root: Root, el: HTMLElement): void {
           tagline={d.tagline}
           quickLinksJson={d.quickLinks}
           topDestinationsJson={d.topDestinations}
+          quickLinksHeading={d.quickLinksHeading}
+          topDestinationsHeading={d.topDestinationsHeading}
+          newsletterHeading={d.newsletterHeading}
+          newsletterDescription={d.newsletterDescription}
+          newsletterButtonLabel={d.newsletterButtonLabel}
         />
       );
       break;
@@ -110,6 +123,7 @@ function renderIntoRoot(id: ComponentId, root: Root, el: HTMLElement): void {
           heading={d.heading}
           description={d.description}
           destinationsJson={d.destinations}
+          exploreTripLabel={d.exploreLabel}
         />
       );
       break;
@@ -120,6 +134,29 @@ function renderIntoRoot(id: ComponentId, root: Root, el: HTMLElement): void {
 
     case 'travel-register':
       root.render(<RegisterForm heading={d.heading} description={d.description} />);
+      break;
+
+    case 'travel-account':
+      root.render(<AccountPage />);
+      break;
+
+    case 'travel-translation-workflow':
+      root.render(
+        <TranslationWorkflowPage
+          heading={d.heading}
+          description={d.description}
+          step1Title={d.step1Title}
+          step1Desc={d.step1Desc}
+          step2Title={d.step2Title}
+          step2Desc={d.step2Desc}
+          step3Title={d.step3Title}
+          step3Desc={d.step3Desc}
+          step4Title={d.step4Title}
+          step4Desc={d.step4Desc}
+          noteHeading={d.noteHeading}
+          noteBody={d.noteBody}
+        />
+      );
       break;
   }
 }

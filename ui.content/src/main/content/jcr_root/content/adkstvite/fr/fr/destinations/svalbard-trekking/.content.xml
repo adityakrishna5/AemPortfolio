@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Trek au Svalbard — expédition guidée sur toundra polaire et glaciers"
+        jcr:language="fr"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Trek au Svalbard"
+        navTitle="Trek au Svalbard"
+        pageTitle="Trek au Svalbard — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-273139829.jpeg"
+                    badgeText="Expédition polaire · 10 jours"
+                    headline="Trek des glaciers"
+                    headlineAccent="du Svalbard"
+                    subheadline="Dix jours à travers l&apos;un des derniers grands espaces sauvages du monde &#8212; calottes glaciaires, ours polaires et océan Arctique à 78&#176; Nord."
+                    cta1Label="Réserver votre place"
+                    cta1Href="/content/adkstvite/fr/fr/register.html"
+                    cta2Label="Voir l&apos;itinéraire complet"
+                    cta2Href="/content/adkstvite/fr/fr/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;Cap sur le Haut-Arctique&lt;/h2&gt;&lt;p&gt;Le Svalbard se situe à mi-chemin entre la Norvège continentale et le pôle Nord &amp;mdash; un archipel gelé de glaciers, fjords et lumière perpétuelle en été. Notre trek en petit groupe suit les anciennes routes de trappeurs, campe sur des moraines et traverse des langues glaciaires bleues avec un guide polaire certifié.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-273139829.jpeg"
+                    alt="Randonneurs sur un glacier à l&apos;aube sous la lumière polaire"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;Temps forts de l&apos;itinéraire&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Camp de base à Longyearbyen, vérification du matériel avec l&apos;équipe arctique.&lt;/li&gt;&lt;li&gt;Traversée du glacier Von Postbreen en crampons et en encordement.&lt;/li&gt;&lt;li&gt;Bivouacs sur les rives du Tempelfjorden &amp;mdash; eiders, phoques et rennes occasionnels.&lt;/li&gt;&lt;li&gt;Guide armé en permanence ; protocole strict de sécurité ours polaires.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Forme &amp; préparation&lt;/h3&gt;&lt;p&gt;Vous devez être à l&apos;aise avec 15 à 20 km par jour, sac de 15 kg, sur terrain inégal parfois verglacé. Aucune expérience préalable des glaciers n&apos;est requise &amp;mdash; nous organisons un briefing technique complet le jour 1.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:tags="[]"
+        cq:template="/conf/adkstvite/settings/wcm/templates/xf-web-variation"
+        cq:xfMasterVariation="{Boolean}true"
+        cq:xfVariantType="web"
+        jcr:language="fr"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Pied de page"
+        sling:resourceType="adkstvite/components/xfpage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <footer-mount
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/travel-footer"
+                brandName="AdventureTrails"
+                brandHref="/content/adkstvite/fr/fr/home.html"
+                tagline="Connecter les aventuriers à des destinations extraordinaires depuis 2010. Chaque voyage est une histoire à écrire."
+                quickLinksHeading="Liens rapides"
+                topDestinationsHeading="Meilleures destinations"
+                newsletterHeading="Restez connecté"
+                newsletterDescription="Recevez les mises à jour des expéditions et l'inspiration voyage dans votre boîte mail."
+                newsletterButtonLabel="Ok">
+                <quickLinks jcr:primaryType="nt:unstructured">
+                    <item0 jcr:primaryType="nt:unstructured" label="Accueil" href="/content/adkstvite/fr/fr/home.html"/>
+                    <item1 jcr:primaryType="nt:unstructured" label="À propos" href="/content/adkstvite/fr/fr/about-us.html"/>
+                    <item2 jcr:primaryType="nt:unstructured" label="Se connecter" href="/content/adkstvite/fr/fr/sign-in.html"/>
+                    <item3 jcr:primaryType="nt:unstructured" label="S&apos;inscrire" href="/content/adkstvite/fr/fr/register.html"/>
+                    <item4 jcr:primaryType="nt:unstructured" label="Processus de traduction" href="/content/adkstvite/fr/fr/translation-workflow.html"/>
+                </quickLinks>
+                <topDestinations jcr:primaryType="nt:unstructured">
+                    <item0 jcr:primaryType="nt:unstructured" label="Surf arctique, Norvège" href="/content/adkstvite/fr/fr/destinations/arctic-surfing-norway.html"/>
+                    <item1 jcr:primaryType="nt:unstructured" label="Trek au Svalbard" href="/content/adkstvite/fr/fr/destinations/svalbard-trekking.html"/>
+                    <item2 jcr:primaryType="nt:unstructured" label="Tour d&apos;Islande" href="/content/adkstvite/fr/fr/destinations/iceland-ring-road.html"/>
+                    <item3 jcr:primaryType="nt:unstructured" label="Highlands écossais" href="/content/adkstvite/fr/fr/destinations/scottish-highlands.html"/>
+                    <item4 jcr:primaryType="nt:unstructured" label="Traversée de Patagonie" href="/content/adkstvite/fr/fr/destinations/patagonia-crossing.html"/>
+                </topDestinations>
+            </footer-mount>
+        </root>
+    </jcr:content>
+</jcr:root>

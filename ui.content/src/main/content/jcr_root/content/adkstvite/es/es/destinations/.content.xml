@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Destinos destacados de AdventureTrails"
+        jcr:language="es"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Destinos"
+        navTitle="Destinos"
+        pageTitle="Destinos — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-238230356.jpeg"
+                    badgeText="Expediciones seleccionadas"
+                    headline="Explora nuestros"
+                    headlineAccent="destinos insignia"
+                    subheadline="Cinco viajes escogidos a mano por hielo, océano y montaña — cada uno pensado para aventureros que quieren más que unas vacaciones."
+                    cta1Label="Empezar por el surf ártico"
+                    cta1Href="/content/adkstvite/es/es/destinations/arctic-surfing-norway.html"
+                    cta2Label="Hablar con un guía"
+                    cta2Href="/content/adkstvite/es/es/about-us.html"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Translation Rules for AdventureTrails.
+
+    Stored at: /conf/adkstvite/settings/translation/rules.xml
+    This is the location AEM's Translation Integration Framework reads per-project
+    translation rules from when the site has sling:configRef="/conf/adkstvite".
+
+    Each <node resourceType="…"> entry tells the XLIFF extractor:
+      - which JCR properties to extract into XLIFF for translation
+      - which to skip (translate="false")
+
+    When a Translation Project runs:
+      1. AEM walks the source-language page tree (/content/adkstvite/us/en/…)
+      2. For every component resource, it matches resourceType to entries below
+      3. Matching propertes are exported as <trans-unit> elements in the XLIFF
+      4. The XLIFF is sent to the configured TMS (see adkstvite-translation cloud config)
+      5. Approved translations are written back to the JCR language-copy nodes
+         (/content/adkstvite/fr/fr/… and /content/adkstvite/es/es/…)
+
+    NOTE: properties listed with translate="false" are still COPIED to the language
+    copy but are not sent for translation (e.g. href, image src, booleans).
+-->
+<translationRules>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Page-level properties (cq:PageContent on every travel page)
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/page/travel-page">
+        <property name="jcr:title"/>
+        <property name="jcr:description"/>
+        <property name="pageTitle"/>
+        <property name="navTitle"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Experience Fragment page (XF shell — title only)
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/xfpage">
+        <property name="jcr:title"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Travel Header
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/travel-header">
+        <property name="brandName"/>
+        <property name="signInLabel"/>
+        <property name="registerLabel"/>
+        <!-- nav item labels are child nodes of the navItems container -->
+        <property name="label" inherit="true"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Travel Footer
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/travel-footer">
+        <property name="tagline"/>
+        <property name="quickLinksHeading"/>
+        <property name="topDestinationsHeading"/>
+        <property name="newsletterHeading"/>
+        <property name="newsletterDescription"/>
+        <property name="newsletterButtonLabel"/>
+        <!-- quick link and destination item labels -->
+        <property name="label" inherit="true"/>
+        <!-- href values are structural — do NOT translate -->
+        <property name="href" translate="false" inherit="true"/>
+        <property name="brandName" translate="false"/>
+        <property name="brandHref" translate="false"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Travel Hero
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/travel-hero">
+        <property name="title"/>
+        <property name="subtitle"/>
+        <property name="ctaLabel"/>
+        <property name="secondaryCtaLabel"/>
+        <property name="altText"/>
+        <!-- image src is structural -->
+        <property name="imageSrc" translate="false"/>
+        <property name="ctaHref" translate="false"/>
+        <property name="secondaryCtaHref" translate="false"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Travel Sign-In Form
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/travel-signin">
+        <property name="heading"/>
+        <property name="subheading"/>
+        <property name="emailLabel"/>
+        <property name="passwordLabel"/>
+        <property name="submitLabel"/>
+        <property name="registerLinkText"/>
+        <property name="forgotPasswordText"/>
+        <property name="errorMessage"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Travel Register Form
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/travel-register">
+        <property name="heading"/>
+        <property name="subheading"/>
+        <property name="firstNameLabel"/>
+        <property name="lastNameLabel"/>
+        <property name="emailLabel"/>
+        <property name="passwordLabel"/>
+        <property name="confirmPasswordLabel"/>
+        <property name="submitLabel"/>
+        <property name="signInLinkText"/>
+        <property name="termsText"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Travel Account Page
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/travel-account">
+        <property name="heading"/>
+        <property name="subheading"/>
+        <property name="tripsLabel"/>
+        <property name="wishlistLabel"/>
+        <property name="settingsLabel"/>
+        <property name="signOutLabel"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Translation Workflow Explainer Page  ← THIS component
+         All 12 authored properties are translatable text.
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/travel-translation-workflow">
+        <property name="heading"/>
+        <property name="description"/>
+        <property name="step1Title"/>
+        <property name="step1Desc"/>
+        <property name="step2Title"/>
+        <property name="step2Desc"/>
+        <property name="step3Title"/>
+        <property name="step3Desc"/>
+        <property name="step4Title"/>
+        <property name="step4Desc"/>
+        <property name="noteHeading"/>
+        <property name="noteBody"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Destination Card
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/travel-destination-card">
+        <property name="title"/>
+        <property name="description"/>
+        <property name="badgeLabel"/>
+        <property name="ctaLabel"/>
+        <property name="altText"/>
+        <property name="src" translate="false"/>
+        <property name="href" translate="false"/>
+    </node>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         Generic Core Components (pass-through for WCM Core)
+         ═══════════════════════════════════════════════════════════════ -->
+    <node resourceType="adkstvite/components/text">
+        <property name="text"/>
+        <property name="richText"/>
+    </node>
+
+    <node resourceType="adkstvite/components/title">
+        <property name="jcr:title"/>
+    </node>
+
+    <node resourceType="adkstvite/components/image">
+        <property name="alt"/>
+        <property name="jcr:title"/>
+        <property name="jcr:description"/>
+        <property name="fileReference" translate="false"/>
+    </node>
+
+    <node resourceType="adkstvite/components/button">
+        <property name="jcr:title"/>
+        <property name="accessibilityLabel"/>
+        <property name="link" translate="false"/>
+    </node>
+
+</translationRules>

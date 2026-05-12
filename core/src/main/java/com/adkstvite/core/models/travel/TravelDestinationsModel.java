@@ -23,6 +23,8 @@ public class TravelDestinationsModel {
     private String heading;
     @ValueMapValue
     private String description;
+    @ValueMapValue
+    private String exploreTripLabel;
 
     private String destinationsJson;
 
@@ -96,5 +98,9 @@ public class TravelDestinationsModel {
 
     public String getDestinationsJson() {
         return destinationsJson;
+    }
+
+    public String getExploreTripLabel() {
+        return exploreTripLabel != null ? exploreTripLabel : "Explore trip";
     }
 }

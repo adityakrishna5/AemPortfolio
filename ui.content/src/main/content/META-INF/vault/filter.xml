@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/conf/adkstvite" mode="replace"/>
-    <filter root="/content/adkstvite" mode="replace"/>
+    <!-- English master: fully source-controlled, replace on install -->
+    <filter root="/content/adkstvite" mode="replace">
+        <exclude pattern="/content/adkstvite/fr(/.*)?"/>
+        <exclude pattern="/content/adkstvite/es(/.*)?"/>
+    </filter>
+    <!-- Language copies: home and about-us pages are source-controlled language copies (not MSM live copies).
+         replace mode ensures translated content is always authoritative on deploy.
+         No cq:LiveRelationship on these nodes — translations live in git, not in MSM. -->
+    <filter root="/content/adkstvite/fr/fr/home" mode="replace"/>
+    <filter root="/content/adkstvite/es/es/home" mode="replace"/>
+    <filter root="/content/adkstvite/fr/fr/about-us" mode="replace"/>
+    <filter root="/content/adkstvite/es/es/about-us" mode="replace"/>
+    <filter root="/content/adkstvite/fr/fr/sign-in" mode="replace"/>
+    <filter root="/content/adkstvite/es/es/sign-in" mode="replace"/>
+    <filter root="/content/adkstvite/fr/fr/register" mode="replace"/>
+    <filter root="/content/adkstvite/es/es/register" mode="replace"/>
+    <filter root="/content/adkstvite/fr/fr/account" mode="replace"/>
+    <filter root="/content/adkstvite/es/es/account" mode="replace"/>
+    <filter root="/content/adkstvite/fr/fr/translation-workflow" mode="replace"/>
+    <filter root="/content/adkstvite/es/es/translation-workflow" mode="replace"/>
+    <!-- destinations subtree: still merge mode so runtime-authored destination pages
+         created outside source control are not wiped on deploy. -->
+    <filter root="/content/adkstvite/fr/fr/destinations" mode="merge"/>
+    <filter root="/content/adkstvite/es/es/destinations" mode="merge"/>
     <filter root="/content/dam/adkstvite" mode="merge">
         <exclude pattern="/content/dam/adkstvite(/.*)?"/>
         <include pattern="/content/dam/adkstvite/jcr:content(/.*)?"/>
     </filter>
     <filter root="/content/dam/adkstvite/asset.jpg" mode="merge"/>
-    <filter root="/content/experience-fragments/adkstvite" mode="merge"/>
+    <filter root="/content/experience-fragments/adkstvite"/>
 </workspaceFilter>

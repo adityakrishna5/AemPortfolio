@@ -14,6 +14,7 @@ interface FeaturedDestinationsProps {
   heading?: string;
   description?: string;
   destinationsJson?: string;
+  exploreTripLabel?: string;
 }
 
 const DEFAULT_DESTINATIONS: DestinationItem[] = [
@@ -56,6 +57,7 @@ const FeaturedDestinations: React.FC<FeaturedDestinationsProps> = ({
   heading = 'Featured Destinations',
   description = 'Handpicked expeditions for the bold and the curious — every destination is vetted by our expert adventure team.',
   destinationsJson,
+  exploreTripLabel = 'Explore trip',
 }) => {
   const destinations: DestinationItem[] = destinationsJson
     ? tryParseJson<DestinationItem[]>(destinationsJson, DEFAULT_DESTINATIONS)
@@ -112,7 +114,7 @@ const FeaturedDestinations: React.FC<FeaturedDestinationsProps> = ({
                   href={dest.href}
                   className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors"
                 >
-                  Explore trip
+                  {exploreTripLabel}
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

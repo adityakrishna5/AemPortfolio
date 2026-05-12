@@ -1,0 +1,17 @@
+{
+  "filter.excluded.paths": [
+    "/libs/dam/gui/content/assets/assetlinkshare",
+    "/content/communities/scorm/RecordResults",
+    "/graphql",
+    "/libs/dam/cfm/headless/endpoints/content/graphql",
+    "/content/_cq_graphql/wknd-shared/endpoint.json",
+    "/content/graphql/endpoint",
+    "/bin/adkstvite/auth",
+    "/bin/adkstvite/auth/login",
+    "/bin/adkstvite/auth/signup",
+    "/bin/adkstvite/auth/logout",
+    "/bin/adkstvite/auth/userinfo",
+    "/bin/adkstvite/auth/refresh",
+    "/bin/adkstvite/auth/csrf"
+  ]
+}

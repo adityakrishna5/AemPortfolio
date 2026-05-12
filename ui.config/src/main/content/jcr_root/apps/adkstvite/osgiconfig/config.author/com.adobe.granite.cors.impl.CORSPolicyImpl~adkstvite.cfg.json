@@ -1,6 +1,14 @@
 {
   "alloworigin": ["http://localhost:3000"],
-  "allowedpaths": ["/(content|conf)/adkstvite.*"],
+  "allowedpaths": [
+    "/(content|conf)/adkstvite.*",
+    "/bin/adkstvite/auth/login",
+    "/bin/adkstvite/auth/signup",
+    "/bin/adkstvite/auth/logout",
+    "/bin/adkstvite/auth/userinfo",
+    "/bin/adkstvite/auth/refresh",
+    "/bin/adkstvite/auth/csrf"
+  ],
   "supportedheaders": [
     "Authorization",
     "Origin",
@@ -8,8 +16,10 @@
     "X-Requested-With",
     "Content-Type",
     "Access-Control-Request-Method",
-    "Access-Control-Request-Headers"
+    "Access-Control-Request-Headers",
+    "X-CSRF-Token"
   ],
-  "supportedmethods": ["GET","HEAD"],
+  "supportedmethods": ["GET","HEAD","POST"],
+  "allowcredentials": true,
   "alloworiginregexp": []
 }

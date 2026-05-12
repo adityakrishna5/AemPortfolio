@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Tour d&apos;Islande — road trip en autonomie autour de l&apos;île de feu et de glace"
+        jcr:language="fr"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Tour d&apos;Islande"
+        navTitle="Tour d&apos;Islande"
+        pageTitle="Tour d&apos;Islande — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/cycling-southern-utah/adobestock-221043703.jpg"
+                    badgeText="Road trip · 12 jours"
+                    headline="Tour"
+                    headlineAccent="d&apos;Islande"
+                    subheadline="1 332 kilomètres de cascades, plages de sable noir et volcans actifs, à parcourir sur la Route 1."
+                    cta1Label="Planifier votre voyage"
+                    cta1Href="/content/adkstvite/fr/fr/register.html"
+                    cta2Label="Voir un exemple d&apos;itinéraire"
+                    cta2Href="/content/adkstvite/fr/fr/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;Un tour complet de l&apos;île&lt;/h2&gt;&lt;p&gt;La Route 1 est le road trip islandais par excellence &amp;mdash; un unique ruban d&apos;asphalte qui fait le tour du pays entre glaciers, geysers et chutes d&apos;eau tonitruantes. Nous planifions l&apos;itinéraire, réservons les guesthouses, vous remettons les clés d&apos;un 4x4 et vous laissons partir avec un pack carte hors-ligne détaillé.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/cycling-southern-utah/adobestock-221043703.jpg"
+                    alt="Route ouverte serpentant dans un paysage volcanique spectaculaire"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;Étapes phares&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Sk&amp;oacute;gafoss et Seljalandsfoss &amp;mdash; deux des cascades les plus photographiées d&apos;Islande.&lt;/li&gt;&lt;li&gt;Plage de sable noir de Reynisfjara et colonnes de basalte de V&amp;iacute;k.&lt;/li&gt;&lt;li&gt;Lagune glaciaire de J&amp;ouml;kuls&amp;aacute;rl&amp;oacute;n et Diamond Beach au soleil couchant.&lt;/li&gt;&lt;li&gt;Lac M&amp;yacute;vatn, Dettifoss et champs géothermiques du nord.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Inclus&lt;/h3&gt;&lt;p&gt;SUV 4x4 tous risques, 11 nuits de guesthouses et fermes soigneusement sélectionnées, assistance 24/7 en français et en anglais, et notre guide jour par jour avec toutes les étapes &amp;mdash; y compris les spots que les touristes ratent.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

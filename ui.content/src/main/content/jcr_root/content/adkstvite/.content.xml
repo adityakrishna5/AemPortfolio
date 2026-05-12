@@ -3,6 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:allowedTemplates="[/conf/adkstvite/settings/wcm/templates/(?!xf-).*]"
+        cq:cloudserviceconfigs="[/conf/adkstvite/settings/cloudconfigs/translation/adkstvite-translation]"
         cq:conf="/conf/adkstvite"
         cq:redirectTarget="/content/adkstvite/us/en"
         cq:template="/conf/adkstvite/settings/wcm/templates/page-content"

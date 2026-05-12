@@ -11,11 +11,11 @@
             sling:resourceType="adkstvite/components/container"
             layout="responsiveGrid">
 
-            <!--/* EDITABLE: Travel header — per-page header; default content in initial/.content.xml */-->
-            <travel-header-area
+            <!--/* LOCKED: Header Experience Fragment — shared across all pages, per-locale variation */-->
+            <header-xf
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="adkstvite/components/container"
-                editable="{Boolean}true"/>
+                sling:resourceType="adkstvite/components/experiencefragment"
+                fragmentVariationPath="/content/experience-fragments/adkstvite/us/en/site/header/master"/>
 
             <!--/* EDITABLE: page-specific content — hero, sections, forms */-->
             <main-content
@@ -24,11 +24,11 @@
                 editable="{Boolean}true"
                 layout="responsiveGrid"/>
 
-            <!--/* EDITABLE: Travel footer — per-page footer; default content in initial/.content.xml */-->
-            <travel-footer-area
+            <!--/* LOCKED: Footer Experience Fragment — shared across all pages, per-locale variation */-->
+            <footer-xf
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="adkstvite/components/container"
-                editable="{Boolean}true"/>
+                sling:resourceType="adkstvite/components/experiencefragment"
+                fragmentVariationPath="/content/experience-fragments/adkstvite/us/en/site/footer/master"/>
 
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">

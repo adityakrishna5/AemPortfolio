@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Translation Integration Framework (TIF) configuration for AdventureTrails.
+
+    Stored at: /conf/adkstvite/settings/cloudconfigs/translation/adkstvite-translation
+    Inherited by all pages under /content/adkstvite via sling:configRef="/conf/adkstvite"
+    on the site root.
+
+    cq:translationTool        — connector service to use.
+                                "dummy" = AEM's built-in Demo connector (no external API
+                                key needed; marks content as translated for dev/QA).
+                                Replace with "MSFT_TRANSLATOR", "GOOGLE_TRANSLATOR",
+                                or your TMS provider ID for production.
+
+    cq:updateLocalCopies      — whether existing language copies are updated automatically
+                                when translated content comes back from the TMS. "always"
+                                means every approved translation job overwrites the JCR
+                                copy and triggers workflow to Publish.
+
+    cq:workflowRid            — workflow model that runs on the DESTINATION language-copy
+                                page when translated content is imported. The standard AEM
+                                model asks a reviewer to approve before publish.
+
+    cq:translateSubpages      — when a translation project is created including this page,
+                                automatically include all child pages.
+-->
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        jcr:title="AdventureTrails Translation Config"
+        sling:resourceType="cq/translation/gui/components/cfgpage"
+        cq:translationTool="dummy"
+        cq:translateLocally="{Boolean}false"
+        cq:translateSubpages="{Boolean}true"
+        cq:updateLocalCopies="always"
+        cq:workflowRid="/var/workflow/models/request_for_activation"
+        cq:smartContentFilter="{Boolean}false"/>
+</jcr:root>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Tierras Altas de Escocia — lochs salvajes, glens ancestrales y el West Highland Way"
+        jcr:language="es"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Tierras Altas de Escocia"
+        navTitle="Tierras Altas de Escocia"
+        pageTitle="Tierras Altas de Escocia — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-167833331.jpeg"
+                    badgeText="Trek guiado · 8 días"
+                    headline="Sendero de las"
+                    headlineAccent="Tierras Altas"
+                    subheadline="Glens brumosos, cumbres Munro y noches templadas con whisky en una travesía de ocho días por la Escocia más salvaje."
+                    cta1Label="Apuntarse al trek"
+                    cta1Href="/content/adkstvite/es/es/register.html"
+                    cta2Label="Hablar con un guía"
+                    cta2Href="/content/adkstvite/es/es/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;Recorrer los caminos antiguos&lt;/h2&gt;&lt;p&gt;Desde las orillas del Loch Lomond hasta la sombra del Ben Nevis, nuestra travesía guiada sigue los senderos de pastores y las antiguas rutas militares por una de las zonas de montaña más vacías de Europa. Etapas cortas, posadas acogedoras y dos ascensos Munro opcionales para quien los quiera.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-167833331.jpeg"
+                    alt="Excursionista asomado a un glen brumoso de las Highlands al amanecer"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;La ruta&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Glasgow &amp;rarr; Drymen &amp;rarr; Rowardennan por la orilla este del Loch Lomond.&lt;/li&gt;&lt;li&gt;Inverarnan, Crianlarich y Tyndrum &amp;mdash; tierra clásica de arrieros.&lt;/li&gt;&lt;li&gt;Devil&apos;s Staircase y ruta alta hasta Kinlochleven.&lt;/li&gt;&lt;li&gt;Final en Fort William bajo el Ben Nevis &amp;mdash; cumbre opcional incluida.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Las veladas&lt;/h3&gt;&lt;p&gt;Transfers de equipaje cada día para caminar solo con mochila ligera. Por la noche&amp;nbsp;: chimeneas, cervezas locales y un dram de single malt cortesía de nuestro guía.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

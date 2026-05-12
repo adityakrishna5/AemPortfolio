@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Patagonia Crossing — a classic two-week trek through Torres del Paine and the southern Andes"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Patagonia Crossing"
+        navTitle="Patagonia Crossing"
+        pageTitle="Patagonia Crossing — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/climbing-new-zealand/adobestock-277768563.jpeg"
+                    badgeText="Expedition · 14 Days"
+                    headline="Patagonia"
+                    headlineAccent="Crossing"
+                    subheadline="Two weeks across the granite spires, blue glaciers and wind-scoured steppe of the southern Andes."
+                    cta1Label="Reserve Expedition"
+                    cta1Href="/content/adkstvite/us/en/register.html"
+                    cta2Label="Ask a Question"
+                    cta2Href="/content/adkstvite/us/en/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;The end of the world &amp;mdash; on foot&lt;/h2&gt;&lt;p&gt;Our Patagonia Crossing links the classic &quot;W&quot; of Torres del Paine with Argentina&apos;s Fitz Roy massif in a single two-week trek. Glacier-blue lakes, condors overhead, and nights in warm mountain refugios after days of big open country.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/climbing-new-zealand/adobestock-277768563.jpeg"
+                    alt="Trekkers beneath granite spires in Patagonia"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;Expedition stages&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Punta Arenas arrival &amp; logistics day, briefing with local guides.&lt;/li&gt;&lt;li&gt;The full &quot;W&quot; circuit: French Valley, Grey Glacier, and the Base Torres sunrise.&lt;/li&gt;&lt;li&gt;Border crossing into Argentina via El Calafate and the Perito Moreno glacier.&lt;/li&gt;&lt;li&gt;El Chalt&amp;eacute;n: Laguna de los Tres beneath Fitz Roy, and the Cerro Torre viewpoint.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Experience level&lt;/h3&gt;&lt;p&gt;Challenging. You should be a regular multi-day trekker comfortable on exposed, windy terrain for 6&amp;ndash;8 hours a day. No technical climbing required, but expect variable weather and some steep scree descents.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Workflow Launcher: Auto Translation Trigger
+
+    Stored at: /conf/adkstvite/settings/workflow/launcher/config/translation-prepare-auto
+
+    What this does:
+    ─────────────────────────────────────────────────────────────────
+    AEM's Workflow Engine evaluates this launcher on every JCR event.
+    When any cq:Page node is ADDED under /content/adkstvite/us/en,
+    the "translation-prepare" workflow fires automatically on that page.
+
+    The translation-prepare workflow:
+      1. Reads the TIF config inherited from /conf/adkstvite (the
+         adkstvite-translation cloud config we created)
+      2. Detects which language copies exist (fr/fr, es/es)
+      3. Creates/updates a Translation Project in Projects (/content/projects)
+      4. Exports page content as XLIFF using translation/rules.xml
+      5. Submits the XLIFF to the configured TMS
+         (currently: AEM Demo connector — marks as translated for dev)
+      6. On job completion, imports translated XLIFF back into the
+         language-copy pages and schedules them for review/publish
+
+    Properties:
+    ─────────────────────────────────────────────────────────────────
+    glob        — ant-style path pattern; fires on any page UNDER us/en
+                  (the (.+) ensures we don't fire on the us/en root itself)
+    eventMask   — 1 = NODE_ADDED (fires when a new page is created)
+    nodetype    — only fire for cq:Page nodes (not every property change)
+    enabled     — set to false to pause auto-translation without deleting
+    runModes    — author only; never fires on publish tier
+    workflow    — /var/workflow/models/translation_prepare
+                  (AEM's standard multi-step translation preparation model)
+
+    To disable for a specific subtree, create an exclusion launcher with
+    a more-specific glob and enabled=false above this one in the launcher
+    evaluation order.
+-->
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:WorkflowLauncher"
+    description="Auto-trigger Translation Preparation Workflow when a new page is created under /content/adkstvite/us/en"
+    enabled="{Boolean}true"
+    eventMask="{Long}1"
+    glob="/content/adkstvite/us/en(/.*)"
+    nodetype="cq:Page"
+    runModes="[author]"
+    workflow="/var/workflow/models/translation_prepare"/>

@@ -13,22 +13,20 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="adkstvite/components/container"
             layout="simple">
-            <navigation
+            <header-mount
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="adkstvite/components/navigation"
-                collectAllPages="false"
-                navigationRoot="/content/adkstvite/us/en"
-                skipNavigationRoot="false"
-                structureDepth="1"/>
-            <languagenavigation
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="adkstvite/components/languagenavigation"
-                navigationRoot="/content/adkstvite/us"
-                structureDepth="2"/>
-            <search
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="adkstvite/components/search"
-                searchRoot="/content/adkstvite/us"/>
+                sling:resourceType="adkstvite/components/travel-header"
+                brandName="AdventureTrails"
+                brandHref="/content/adkstvite/us/en/home.html"
+                signInLabel="Sign In"
+                signInHref="/content/adkstvite/us/en/sign-in.html"
+                registerLabel="Register"
+                registerHref="/content/adkstvite/us/en/register.html">
+                <navItems jcr:primaryType="nt:unstructured">
+                    <item0 jcr:primaryType="nt:unstructured" label="Home" href="/content/adkstvite/us/en/home.html"/>
+                    <item1 jcr:primaryType="nt:unstructured" label="About Us" href="/content/adkstvite/us/en/about-us.html"/>
+                </navItems>
+            </header-mount>
         </root>
     </jcr:content>
 </jcr:root>

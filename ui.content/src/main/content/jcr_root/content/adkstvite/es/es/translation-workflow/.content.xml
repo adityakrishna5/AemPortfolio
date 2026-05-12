@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Cómo funciona el marco de integración de traducción de AEM (TIF) — copia de idioma, XLIFF, TMS, revisión, publicación"
+        jcr:language="es"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Proceso de traducción"
+        navTitle="Proceso de traducción"
+        pageTitle="Proceso de traducción — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <translation-workflow-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-translation-workflow"
+                    heading="Cómo funciona la traducción en AEM"
+                    description="Un vistazo a cómo el contenido llega a cada idioma en la plataforma AdventureTrails."
+                    step1Title="Creación de copia de idioma"
+                    step1Desc="Los autores de contenido inician una copia de idioma en AEM Sites. La estructura de la página se replica en la ruta de configuración regional de destino sin contenido."
+                    step2Title="Proyecto de traducción"
+                    step2Desc="AEM crea un proyecto de traducción. El contenido se exporta como XLIFF y se envía al sistema de gestión de traducciones (TMS) conectado."
+                    step3Title="Revisión humana"
+                    step3Desc="Expertos en idiomas revisan las traducciones (automáticas o humanas) en el TMS, realizando correcciones antes de aprobar el trabajo."
+                    step4Title="Aprobación y publicación"
+                    step4Desc="Las traducciones aprobadas se reimportan en AEM, son revisadas por los editores de contenido y se publican en cada sitio de configuración regional."
+                    noteHeading="En este prototipo"
+                    noteBody="Como se trata de un prototipo para desarrolladores, las traducciones se crean directamente en el JCR como archivos .content.xml específicos de cada configuración regional — el mismo resultado que produciría un flujo de trabajo TMS real."/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

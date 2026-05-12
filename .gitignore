@@ -105,4 +105,7 @@ reports/
 # Others
 dispatcher/src/conf.d/variables/default.vars
 ui.tests.wdio/test-module/assets/form/themes/**/*diff.png
+
+# Local OSGi config overrides — contain real secrets, never commit
+**/osgiconfig/config.local/
 ui.tests.wdio/test-module/assets/form/themes/**/*current.png

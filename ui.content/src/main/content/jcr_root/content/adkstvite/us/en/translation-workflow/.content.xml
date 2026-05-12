@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="How AEM Translation Integration Framework (TIF) works — language copy, XLIFF, TMS, review, publish"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Translation Workflow"
+        navTitle="Translation Workflow"
+        pageTitle="Translation Workflow — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <translation-workflow-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-translation-workflow"
+                    heading="How AEM Translation Works"
+                    description="A look at how content reaches every language across the AdventureTrails platform."
+                    step1Title="Language Copy Creation"
+                    step1Desc="Content authors initiate a language copy in AEM Sites. Page structure is replicated to the target locale path without content."
+                    step2Title="Translation Project"
+                    step2Desc="AEM creates a Translation Project. Content is exported as XLIFF and sent to the connected Translation Management System (TMS)."
+                    step3Title="Human Review"
+                    step3Desc="Language experts review machine or human translations inside the TMS, making corrections before approving the job."
+                    step4Title="Approval &amp; Publish"
+                    step4Desc="Approved translations are imported back into AEM, reviewed by content editors, and published live to each locale site."
+                    noteHeading="On this prototype"
+                    noteBody="Because this is a developer prototype, translations are authored directly into the JCR as locale-specific .content.xml files — the same output a real TMS workflow would produce."/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>

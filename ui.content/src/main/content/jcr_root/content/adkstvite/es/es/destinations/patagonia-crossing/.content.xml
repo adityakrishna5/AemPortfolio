@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/adkstvite/settings/wcm/templates/travel-page"
+        jcr:description="Travesía de Patagonia — dos semanas de trek por los Andes australes"
+        jcr:language="es"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Travesía de Patagonia"
+        navTitle="Travesía de Patagonia"
+        pageTitle="Travesía de Patagonia — AdventureTrails"
+        sling:resourceType="adkstvite/components/page/travel-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="adkstvite/components/container"
+            layout="responsiveGrid">
+            <main-content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="adkstvite/components/container"
+                layout="responsiveGrid">
+                <hero-mount
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/travel-hero"
+                    heroImage="/content/dam/wknd-shared/en/adventures/climbing-new-zealand/adobestock-277768563.jpeg"
+                    badgeText="Expedición · 14 días"
+                    headline="Travesía"
+                    headlineAccent="de Patagonia"
+                    subheadline="Dos semanas entre agujas de granito, glaciares azules y la estepa barrida por el viento de los Andes australes."
+                    cta1Label="Reservar la expedición"
+                    cta1Href="/content/adkstvite/es/es/register.html"
+                    cta2Label="Haz una pregunta"
+                    cta2Href="/content/adkstvite/es/es/about-us.html"/>
+                <text_intro
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h2&gt;El fin del mundo &amp;mdash; a pie&lt;/h2&gt;&lt;p&gt;Nuestra Travesía de Patagonia une el clásico circuito &quot;W&quot; de Torres del Paine con el macizo del Fitz Roy en Argentina en un único trek de dos semanas. Lagos glaciares turquesa, cóndores sobrevolando y noches en cálidos refugios tras jornadas en territorio abierto.&lt;/p&gt;"/>
+                <image_primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/image"
+                    fileReference="/content/dam/wknd-shared/en/adventures/climbing-new-zealand/adobestock-277768563.jpeg"
+                    alt="Trekkers bajo las agujas de granito de Patagonia"/>
+                <text_body
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="adkstvite/components/text"
+                    textIsRich="true"
+                    text="&lt;h3&gt;Etapas de la expedición&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Llegada a Punta Arenas, día logístico y briefing con guías locales.&lt;/li&gt;&lt;li&gt;Circuito &quot;W&quot; completo&amp;nbsp;: valle Francés, glaciar Grey y amanecer en las Base Torres.&lt;/li&gt;&lt;li&gt;Cruce de frontera hacia Argentina vía El Calafate y glaciar Perito Moreno.&lt;/li&gt;&lt;li&gt;El Chalt&amp;eacute;n&amp;nbsp;: Laguna de los Tres bajo el Fitz Roy y mirador del Cerro Torre.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Nivel de experiencia&lt;/h3&gt;&lt;p&gt;Exigente. Debes ser un trekker habitual, cómodo en terreno expuesto y con viento 6 a 8 horas al día. No se requiere escalada técnica, pero hay que contar con meteorología variable y descensos pedregosos.&lt;/p&gt;"/>
+            </main-content>
+        </root>
+    </jcr:content>
+</jcr:root>
