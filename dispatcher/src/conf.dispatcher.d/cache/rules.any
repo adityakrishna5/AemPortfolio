@@ -5,3 +5,14 @@
 #
 
 $include "./default_rules.any"
+
+# ── Never cache Auth0 proxy endpoints ────────────────────────────────────────
+# Auth cookies, CSRF tokens and session state must always hit AEM Publish.
+/0100 { /glob "/bin/adkstvite/auth/*" /type "deny" }
+
+# ── Never cache the sign-in / register / account pages ───────────────────────
+# These pages are gated behind auth state; caching them risks serving stale
+# or incorrect personalised content to anonymous users.
+/0101 { /glob "/content/adkstvite/*/sign-in.html"  /type "deny" }
+/0102 { /glob "/content/adkstvite/*/register.html" /type "deny" }
+/0103 { /glob "/content/adkstvite/*/account.html"  /type "deny" }

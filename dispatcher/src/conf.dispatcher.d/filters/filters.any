@@ -6,6 +6,16 @@
 
 $include "./default_filters.any"
 
+# ── Auth0 proxy endpoints (/bin/adkstvite/auth/*) ────────────────────────────
+# These are the Sling servlet paths registered by Auth0ProxyServlet.
+# All methods must pass through; the dispatcher must NEVER cache responses.
+/0200 { /type "allow" /method "GET"  /url "/bin/adkstvite/auth/userinfo" }
+/0201 { /type "allow" /method "GET"  /url "/bin/adkstvite/auth/csrf" }
+/0202 { /type "allow" /method "POST" /url "/bin/adkstvite/auth/login" }
+/0203 { /type "allow" /method "POST" /url "/bin/adkstvite/auth/signup" }
+/0204 { /type "allow" /method "POST" /url "/bin/adkstvite/auth/logout" }
+/0205 { /type "allow" /method "POST" /url "/bin/adkstvite/auth/refresh" }
+
 # Allow components JSON model
 /0101 { /type "allow" /extension "json" /selectors "model" /path "/content/*" }
 

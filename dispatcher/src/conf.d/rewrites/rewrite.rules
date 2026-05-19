@@ -7,6 +7,10 @@
 
 Include conf.d/rewrites/default_rewrite.rules
 
+# ── Vanity URLs ───────────────────────────────────────────────────────────────
+RewriteRule ^/sign-in/?$ /content/${CONTENT_FOLDER_NAME}/us/en/sign-in.html [PT,L]
+RewriteRule ^/register/?$ /content/${CONTENT_FOLDER_NAME}/us/en/register.html [PT,L]
+
 # rewrite for root redirect
 RewriteRule ^/?$ /content/${CONTENT_FOLDER_NAME}/us/en.html [PT,L]
 

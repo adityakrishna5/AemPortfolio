@@ -5,3 +5,7 @@
 #
 
 $include "./default_clientheaders.any"
+
+# Auth0 proxy CSRF header — the double-submit cookie pattern sends the signed
+# token in X-CSRF-Token. The default list only includes "CSRF-Token" (no X- prefix).
+"X-CSRF-Token"
